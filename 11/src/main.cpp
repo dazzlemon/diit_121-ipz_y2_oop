@@ -8,6 +8,9 @@ auto main() -> int {
 	std::function<double(double)>	g = [MAX] (double x) {return cos(x) * MAX;};
 	auto range_ = std::make_pair(0.0, MAX);
 
+	std::cout << "f(x) = x" << std::endl;
+	std::cout << "g(x) = cos(10 * x)" << std::endl;
+	std::cout << "f = g on range [0, 10] for xs: ";
 	auto xs = v1::intersections(f, g, range_);
 	for (auto x : xs) {
 		std::cout << x << " ";
