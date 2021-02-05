@@ -66,7 +66,7 @@ auto linspace(N start, N stop, size_t num) -> std::vector<N> {
 
 
 template<class N>
-auto sign(N x) -> int{
+auto sign(N x) -> int {
 	return x > 0 ? 1
 		 : x < 0 ? -1
 				 : 0;
