@@ -72,61 +72,44 @@ $(function() {
 <a href="oop11v2_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef OOP11V2_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#define OOP11V2_H</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;functional&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;list&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;ranges&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">namespace </span>v2 {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> N&gt;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">auto</span> <a class="code" href="oop11v1_8h.html#aff118f5808ffa23aa501aced8df977f1">intersections</a>(std::function&lt;N(N)&gt; f, std::function&lt;N(N)&gt; g, std::pair&lt;N, N&gt; range_) -&gt; std::vector&lt;N&gt;;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> N&gt;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">auto</span> <a class="code" href="oop11v1_8h.html#aaab5190f779bbdea588f6475616556ce">linspace</a>(N start, N stop, <span class="keywordtype">size_t</span> num) -&gt; std::vector&lt;N&gt;;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> N&gt;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">auto</span> <a class="code" href="oop11v1_8h.html#a36f391e8ecc3aeb818449b9a4bac6d74">sign</a>(N x) -&gt; int;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;functional&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;list&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">namespace </span>v2 {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> N&gt;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">auto</span> <a class="code" href="oop11v1_8h.html#aff118f5808ffa23aa501aced8df977f1">intersections</a>(std::function&lt;N(N)&gt; f, std::function&lt;N(N)&gt; g, std::pair&lt;N, N&gt; range_) -&gt; std::vector&lt;N&gt;;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> N&gt;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">auto</span> <a class="code" href="oop11v1_8h.html#aaab5190f779bbdea588f6475616556ce">linspace</a>(N start, N stop, <span class="keywordtype">size_t</span> num) -&gt; std::vector&lt;N&gt;;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> N&gt;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">auto</span> <a class="code" href="oop11v1_8h.html#a36f391e8ecc3aeb818449b9a4bac6d74">sign</a>(N x) -&gt; int;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> N&gt;</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="oop11v2_8h.html#a9a514ac4ec25964b9e3dc0461218282e">   44</a></span>&#160;<span class="keyword">auto</span> intersections(std::function&lt;N(N)&gt; f, std::function&lt;N(N)&gt; g, std::pair&lt;N, N&gt; range_) -&gt; std::vector&lt;N&gt; {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> N&gt;</div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="oop11v2_8h.html#a9a514ac4ec25964b9e3dc0461218282e">   49</a></span>&#160;<span class="keyword">auto</span> intersections(std::function&lt;N(N)&gt; f, std::function&lt;N(N)&gt; g, std::pair&lt;N, N&gt; range_) -&gt; std::vector&lt;N&gt; {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">size_t</span> NUMS = 1000;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">auto</span> xs = linspace(range_.first, range_.second, NUMS);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keyword">auto</span> signs = xs | std::views::transform([f, g] (<span class="keyword">auto</span> x) {<span class="keywordflow">return</span> sign(f(x) - g(x));});</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keyword">auto</span> signs_vec = std::vector(signs.begin(), signs.end());</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    std::transform(signs_vec.begin(), signs_vec.end(), ++signs_vec.begin(), signs_vec.begin(), [] (<span class="keyword">auto</span> a, <span class="keyword">auto</span> b) {return a - b;});</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    std::transform(xs.begin(), xs.end(), signs_vec.begin(), xs.begin(), [] (<span class="keyword">auto</span> x, <span class="keyword">auto</span> sign_) {return sign_ == 0 ? INFINITY : x;});</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">auto</span> res = xs | std::views::filter([] (<span class="keyword">auto</span> x) {<span class="keywordflow">return</span> x != INFINITY;});</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">return</span> std::vector(res.begin(), --res.end());<span class="comment">//last num wasnt checked</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="oop11v2_8h.html#a981a2c7f03ef6e94bae0dca45e959165">   49</a></span>&#160;<span class="keyword">auto</span> linspace(N start, N stop, <span class="keywordtype">size_t</span> num) -&gt; std::vector&lt;N&gt; {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> N&gt;</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="oop11v2_8h.html#a3a260517f26eac2239299a02e4c8eafe">   54</a></span>&#160;<span class="keyword">auto</span> sign(N x) -&gt; <span class="keywordtype">int</span>{</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">return</span> x &gt; 0 ? 1</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;             : x &lt; 0 ? -1</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                             : 0;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> N&gt;</div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="oop11v2_8h.html#a981a2c7f03ef6e94bae0dca45e959165">   62</a></span>&#160;<span class="keyword">auto</span> linspace(N start, N stop, <span class="keywordtype">size_t</span> num) -&gt; std::vector&lt;N&gt; {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    std::vector&lt;N&gt; vec(num);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    N step = (stop - start) / (num - 1);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    std::generate(vec.begin(), vec.end(), [n = start - step, step] () <span class="keyword">mutable</span> {n += step; return n;});</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">return</span> vec;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> N&gt;</div>
-<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="oop11v2_8h.html#a3a260517f26eac2239299a02e4c8eafe">   71</a></span>&#160;<span class="keyword">auto</span> sign(N x) -&gt; <span class="keywordtype">int</span>{</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">return</span> x &gt; 0 ? 1</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;             : x &lt; 0 ? -1</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                             : 0;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;}<span class="comment">//namespace v2</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aoop11v1_8h_html_a36f391e8ecc3aeb818449b9a4bac6d74"><div class="ttname"><a href="oop11v1_8h.html#a36f391e8ecc3aeb818449b9a4bac6d74">v1::sign</a></div><div class="ttdeci">auto sign(N x) -&gt; int</div><div class="ttdoc">The sign function returns -1 if x &lt; 0, 0 if x==0, 1 if x &gt; 0.</div><div class="ttdef"><b>Definition:</b> oop11v1.h:71</div></div>
-<div class="ttc" id="aoop11v1_8h_html_aaab5190f779bbdea588f6475616556ce"><div class="ttname"><a href="oop11v1_8h.html#aaab5190f779bbdea588f6475616556ce">v1::linspace</a></div><div class="ttdeci">auto linspace(N start, N stop, size_t num) -&gt; std::vector&lt; N &gt;</div><div class="ttdoc">Returns num evenly spaced samples, calculate over the interval [start, stop].</div><div class="ttdef"><b>Definition:</b> oop11v1.h:62</div></div>
-<div class="ttc" id="aoop11v1_8h_html_aff118f5808ffa23aa501aced8df977f1"><div class="ttname"><a href="oop11v1_8h.html#aff118f5808ffa23aa501aced8df977f1">v1::intersections</a></div><div class="ttdeci">auto intersections(std::function&lt; N(N)&gt; f, std::function&lt; N(N)&gt; g, std::pair&lt; N, N &gt; range_) -&gt; std::vector&lt; N &gt;</div><div class="ttdoc">Returns intersections of f and g on range_.</div><div class="ttdef"><b>Definition:</b> oop11v1.h:49</div></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}<span class="comment">//namespace v2</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aoop11v1_8h_html_a36f391e8ecc3aeb818449b9a4bac6d74"><div class="ttname"><a href="oop11v1_8h.html#a36f391e8ecc3aeb818449b9a4bac6d74">v1::sign</a></div><div class="ttdeci">auto sign(N x) -&gt; int</div><div class="ttdoc">The sign function returns -1 if x &lt; 0, 0 if x==0, 1 if x &gt; 0.</div><div class="ttdef"><b>Definition:</b> oop11v1.h:69</div></div>
+<div class="ttc" id="aoop11v1_8h_html_aaab5190f779bbdea588f6475616556ce"><div class="ttname"><a href="oop11v1_8h.html#aaab5190f779bbdea588f6475616556ce">v1::linspace</a></div><div class="ttdeci">auto linspace(N start, N stop, size_t num) -&gt; std::vector&lt; N &gt;</div><div class="ttdoc">Returns num evenly spaced samples, calculate over the interval [start, stop].</div><div class="ttdef"><b>Definition:</b> oop11v1.h:60</div></div>
+<div class="ttc" id="aoop11v1_8h_html_aff118f5808ffa23aa501aced8df977f1"><div class="ttname"><a href="oop11v1_8h.html#aff118f5808ffa23aa501aced8df977f1">v1::intersections</a></div><div class="ttdeci">auto intersections(std::function&lt; N(N)&gt; f, std::function&lt; N(N)&gt; g, std::pair&lt; N, N &gt; range_) -&gt; std::vector&lt; N &gt;</div><div class="ttdoc">Returns intersections of f and g on range_.</div><div class="ttdef"><b>Definition:</b> oop11v1.h:47</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -5,8 +5,6 @@
 #include <algorithm>
 #include <cmath>
 #include <functional>
-#include <iostream>
-#include <list>
 #include <ranges>
 #include <vector>
 
@@ -16,7 +14,7 @@ namespace v1 {
  * @param[in] f y(x) function on 2d plane which exists for all xs in range_
  * @param[in] g y(x) function on 2d plane which exists for all xs in range_
  * @param[in] range_ Range on which intersections between f and g will be searched
- * @tparam N Numeric Type
+ * @tparam N Floating point Numeric Type
  * @return vector<N> of xs in which f and g intersect
  */
 template<class N>
