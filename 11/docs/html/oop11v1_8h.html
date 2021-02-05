@@ -73,6 +73,7 @@ $(function() {
 <div class="contents">
 <div class="textblock"><code>#include &lt;algorithm&gt;</code><br />
 <code>#include &lt;cmath&gt;</code><br />
+<code>#include &lt;concepts&gt;</code><br />
 <code>#include &lt;functional&gt;</code><br />
 <code>#include &lt;ranges&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
@@ -81,22 +82,22 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aff118f5808ffa23aa501aced8df977f1"><td class="memTemplParams" colspan="2">template&lt;class N &gt; </td></tr>
-<tr class="memitem:aff118f5808ffa23aa501aced8df977f1"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="oop11v1_8h.html#aff118f5808ffa23aa501aced8df977f1">v1::intersections</a> (std::function&lt; N(N)&gt; f, std::function&lt; N(N)&gt; g, std::pair&lt; N, N &gt; range_) -&gt; std::vector&lt; N &gt;</td></tr>
-<tr class="memdesc:aff118f5808ffa23aa501aced8df977f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns intersections of f and g on range_.  <a href="oop11v1_8h.html#aff118f5808ffa23aa501aced8df977f1">More...</a><br /></td></tr>
-<tr class="separator:aff118f5808ffa23aa501aced8df977f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaab5190f779bbdea588f6475616556ce"><td class="memTemplParams" colspan="2">template&lt;class N &gt; </td></tr>
-<tr class="memitem:aaab5190f779bbdea588f6475616556ce"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="oop11v1_8h.html#aaab5190f779bbdea588f6475616556ce">v1::linspace</a> (N start, N stop, size_t num) -&gt; std::vector&lt; N &gt;</td></tr>
-<tr class="memdesc:aaab5190f779bbdea588f6475616556ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns num evenly spaced samples, calculate over the interval [start, stop].  <a href="oop11v1_8h.html#aaab5190f779bbdea588f6475616556ce">More...</a><br /></td></tr>
-<tr class="separator:aaab5190f779bbdea588f6475616556ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36f391e8ecc3aeb818449b9a4bac6d74"><td class="memTemplParams" colspan="2">template&lt;class N &gt; </td></tr>
-<tr class="memitem:a36f391e8ecc3aeb818449b9a4bac6d74"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="oop11v1_8h.html#a36f391e8ecc3aeb818449b9a4bac6d74">v1::sign</a> (N x) -&gt; int</td></tr>
-<tr class="memdesc:a36f391e8ecc3aeb818449b9a4bac6d74"><td class="mdescLeft">&#160;</td><td class="mdescRight">The sign function returns -1 if x &lt; 0, 0 if x==0, 1 if x &gt; 0.  <a href="oop11v1_8h.html#a36f391e8ecc3aeb818449b9a4bac6d74">More...</a><br /></td></tr>
-<tr class="separator:a36f391e8ecc3aeb818449b9a4bac6d74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e313d569c2d4b2853ffeab92679b81c"><td class="memTemplParams" colspan="2">template&lt;class N &gt; </td></tr>
+<tr class="memitem:a9e313d569c2d4b2853ffeab92679b81c"><td class="memTemplItemLeft" align="right" valign="top">requires std::floating_point&lt; N &gt; &amp;&amp;std::totally_ordered_with&lt; N, int &gt; auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="oop11v1_8h.html#a9e313d569c2d4b2853ffeab92679b81c">v1::intersections</a> (std::function&lt; N(N)&gt; f, std::function&lt; N(N)&gt; g, std::pair&lt; N, N &gt; range_) -&gt; std::vector&lt; N &gt;</td></tr>
+<tr class="memdesc:a9e313d569c2d4b2853ffeab92679b81c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns intersections of f and g on range_.  <a href="oop11v1_8h.html#a9e313d569c2d4b2853ffeab92679b81c">More...</a><br /></td></tr>
+<tr class="separator:a9e313d569c2d4b2853ffeab92679b81c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48a6a46f6854ae009d4cb06bcc59c75c"><td class="memTemplParams" colspan="2">template&lt;class N &gt; </td></tr>
+<tr class="memitem:a48a6a46f6854ae009d4cb06bcc59c75c"><td class="memTemplItemLeft" align="right" valign="top">requires std::floating_point&lt; N &gt; &amp;&amp;std::totally_ordered_with&lt; N, int &gt; auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="oop11v1_8h.html#a48a6a46f6854ae009d4cb06bcc59c75c">v1::linspace</a> (N start, N stop, size_t num) -&gt; std::vector&lt; N &gt;</td></tr>
+<tr class="memdesc:a48a6a46f6854ae009d4cb06bcc59c75c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns num evenly spaced samples, calculate over the interval [start, stop].  <a href="oop11v1_8h.html#a48a6a46f6854ae009d4cb06bcc59c75c">More...</a><br /></td></tr>
+<tr class="separator:a48a6a46f6854ae009d4cb06bcc59c75c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a039a6de9db72750b75320ee29c41dd4d"><td class="memTemplParams" colspan="2">template&lt;class N &gt; </td></tr>
+<tr class="memitem:a039a6de9db72750b75320ee29c41dd4d"><td class="memTemplItemLeft" align="right" valign="top">requires std::totally_ordered_with&lt; N, int &gt; auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="oop11v1_8h.html#a039a6de9db72750b75320ee29c41dd4d">v1::sign</a> (N x) -&gt; int</td></tr>
+<tr class="memdesc:a039a6de9db72750b75320ee29c41dd4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The sign function returns -1 if x &lt; 0, 0 if x==0, 1 if x &gt; 0.  <a href="oop11v1_8h.html#a039a6de9db72750b75320ee29c41dd4d">More...</a><br /></td></tr>
+<tr class="separator:a039a6de9db72750b75320ee29c41dd4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="aff118f5808ffa23aa501aced8df977f1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aff118f5808ffa23aa501aced8df977f1">&#9670;&nbsp;</a></span>intersections()</h2>
+<a id="a9e313d569c2d4b2853ffeab92679b81c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e313d569c2d4b2853ffeab92679b81c">&#9670;&nbsp;</a></span>intersections()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -104,7 +105,7 @@ Functions</h2></td></tr>
 template&lt;class N &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">auto v1::intersections </td>
+          <td class="memname">requires std::floating_point&lt; N &gt; &amp;&amp;std::totally_ordered_with&lt; N, int &gt; auto v1::intersections </td>
           <td>(</td>
           <td class="paramtype">std::function&lt; N(N)&gt;&#160;</td>
           <td class="paramname"><em>f</em>, </td>
@@ -140,7 +141,7 @@ template&lt;class N &gt; </div>
 </dl>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">N</td><td>Floating point Numeric Type </td></tr>
+    <tr><td class="paramname">N</td><td>Floating point Numeric Type orderable with int </td></tr>
   </table>
   </dd>
 </dl>
@@ -148,8 +149,8 @@ template&lt;class N &gt; </div>
 
 </div>
 </div>
-<a id="aaab5190f779bbdea588f6475616556ce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaab5190f779bbdea588f6475616556ce">&#9670;&nbsp;</a></span>linspace()</h2>
+<a id="a48a6a46f6854ae009d4cb06bcc59c75c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48a6a46f6854ae009d4cb06bcc59c75c">&#9670;&nbsp;</a></span>linspace()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -157,7 +158,7 @@ template&lt;class N &gt; </div>
 template&lt;class N &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">auto v1::linspace </td>
+          <td class="memname">requires std::floating_point&lt; N &gt; &amp;&amp;std::totally_ordered_with&lt; N, int &gt; auto v1::linspace </td>
           <td>(</td>
           <td class="paramtype">N&#160;</td>
           <td class="paramname"><em>start</em>, </td>
@@ -193,7 +194,7 @@ template&lt;class N &gt; </div>
 </dl>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">N</td><td>Floating point Numeric Type </td></tr>
+    <tr><td class="paramname">N</td><td>Floating point Numeric Type orderable with int </td></tr>
   </table>
   </dd>
 </dl>
@@ -201,8 +202,8 @@ template&lt;class N &gt; </div>
 
 </div>
 </div>
-<a id="a36f391e8ecc3aeb818449b9a4bac6d74"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a36f391e8ecc3aeb818449b9a4bac6d74">&#9670;&nbsp;</a></span>sign()</h2>
+<a id="a039a6de9db72750b75320ee29c41dd4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a039a6de9db72750b75320ee29c41dd4d">&#9670;&nbsp;</a></span>sign()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -210,7 +211,7 @@ template&lt;class N &gt; </div>
 template&lt;class N &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">auto v1::sign </td>
+          <td class="memname">requires std::totally_ordered_with&lt; N, int &gt; auto v1::sign </td>
           <td>(</td>
           <td class="paramtype">N&#160;</td>
           <td class="paramname"><em>x</em></td><td>)</td>
@@ -228,7 +229,7 @@ template&lt;class N &gt; </div>
 </dl>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">N</td><td>Numeric Type </td></tr>
+    <tr><td class="paramname">N</td><td>Numeric Type ordererable with int </td></tr>
   </table>
   </dd>
 </dl>

@@ -4,6 +4,7 @@
 
 #include <algorithm>
 #include <cmath>
+#include <concepts>
 #include <functional>
 #include <ranges>
 #include <vector>
@@ -14,10 +15,11 @@ namespace v1 {
  * @param[in] f y(x) function on 2d plane which exists for all xs in range_
  * @param[in] g y(x) function on 2d plane which exists for all xs in range_
  * @param[in] range_ Range on which intersections between f and g will be searched
- * @tparam N Floating point Numeric Type
+ * @tparam N Floating point Numeric Type orderable with int
  * @return vector<N> of xs in which f and g intersect
  */
 template<class N>
+	requires std::floating_point<N> && std::totally_ordered_with<N, int>
 auto intersections(std::function<N(N)> f, std::function<N(N)> g, std::pair<N, N> range_) -> std::vector<N>;
 
 
@@ -26,24 +28,27 @@ auto intersections(std::function<N(N)> f, std::function<N(N)> g, std::pair<N, N>
  * @param[in] start The starting value of the sequence
  * @param[in] stop The end value of the sequence
  * @param[in] num Number of samples to generate
- * @tparam N Floating point Numeric Type
+ * @tparam N Floating point Numeric Type orderable with int
  * @return num equally spaced samples in the closed interval [start, stop]
  */ 
 template<class N>
+	requires std::floating_point<N> && std::totally_ordered_with<N, int>
 auto linspace(N start, N stop, size_t num) -> std::vector<N>;
 
 
 /**
  * @brief The sign function returns -1 if x < 0, 0 if x==0, 1 if x > 0.
  * @param[in] x input value
- * @tparam N Numeric Type
+ * @tparam N Numeric Type ordererable with int
  * @return The sign of x
  */
 template<class N>
+	requires std::totally_ordered_with<N, int>
 auto sign(N x) -> int;
 
 
 template<class N>
+	requires std::floating_point<N> && std::totally_ordered_with<N, int>
 auto intersections(std::function<N(N)> f, std::function<N(N)> g, std::pair<N, N> range_) -> std::vector<N> {
 	const size_t NUMS = 1000;
 	auto xs = linspace(range_.first, range_.second, NUMS);
@@ -57,6 +62,7 @@ auto intersections(std::function<N(N)> f, std::function<N(N)> g, std::pair<N, N>
 
 
 template<class N>
+	requires std::floating_point<N> && std::totally_ordered_with<N, int>
 auto linspace(N start, N stop, size_t num) -> std::vector<N> {
 	std::vector<N> vec(num);
 	N step = (stop - start) / (num - 1);
@@ -66,6 +72,7 @@ auto linspace(N start, N stop, size_t num) -> std::vector<N> {
 
 
 template<class N>
+	requires std::totally_ordered_with<N, int>
 auto sign(N x) -> int {
 	return x > 0 ? 1
 	     : x < 0 ? -1

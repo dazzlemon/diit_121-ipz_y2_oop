@@ -6,7 +6,7 @@ auto main() -> int {
 	const double MAX = 10.0;
 	std::function<double(double)> f = [] (double x) {return x;};
 	std::function<double(double)>	g = [MAX] (double x) {return cos(x) * MAX;};
-	auto range_ = std::make_pair(0.0, MAX);
+	auto range_ = std::make_pair(1.0, MAX);
 
 	std::cout << "f(x) = x" << std::endl;
 	std::cout << "g(x) = 10 * cos(x)" << std::endl;

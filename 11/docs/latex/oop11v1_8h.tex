@@ -2,27 +2,28 @@
 \label{oop11v1_8h}\index{/home/dazzlemon/hdd\_dazzlemon/github/diit\_121-\/ipz\_y2\_oop/11/src/include/oop11v1.h@{/home/dazzlemon/hdd\_dazzlemon/github/diit\_121-\/ipz\_y2\_oop/11/src/include/oop11v1.h}}
 {\ttfamily \#include $<$algorithm$>$}\newline
 {\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$concepts$>$}\newline
 {\ttfamily \#include $<$functional$>$}\newline
 {\ttfamily \#include $<$ranges$>$}\newline
 {\ttfamily \#include $<$vector$>$}\newline
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-{\footnotesize template$<$class N $>$ }\\auto \mbox{\hyperlink{oop11v1_8h_aff118f5808ffa23aa501aced8df977f1}{v1\+::intersections}} (std\+::function$<$ N(N)$>$ f, std\+::function$<$ N(N)$>$ g, std\+::pair$<$ N, N $>$ range\+\_\+) -\/$>$ std\+::vector$<$ N $>$
+{\footnotesize template$<$class N $>$ }\\requires std\+::floating\+\_\+point$<$ N $>$ \&\&std\+::totally\+\_\+ordered\+\_\+with$<$ N, int $>$ auto \mbox{\hyperlink{oop11v1_8h_a9e313d569c2d4b2853ffeab92679b81c}{v1\+::intersections}} (std\+::function$<$ N(N)$>$ f, std\+::function$<$ N(N)$>$ g, std\+::pair$<$ N, N $>$ range\+\_\+) -\/$>$ std\+::vector$<$ N $>$
 \begin{DoxyCompactList}\small\item\em Returns intersections of f and g on range\+\_\+. \end{DoxyCompactList}\item 
-{\footnotesize template$<$class N $>$ }\\auto \mbox{\hyperlink{oop11v1_8h_aaab5190f779bbdea588f6475616556ce}{v1\+::linspace}} (N start, N stop, size\+\_\+t num) -\/$>$ std\+::vector$<$ N $>$
+{\footnotesize template$<$class N $>$ }\\requires std\+::floating\+\_\+point$<$ N $>$ \&\&std\+::totally\+\_\+ordered\+\_\+with$<$ N, int $>$ auto \mbox{\hyperlink{oop11v1_8h_a48a6a46f6854ae009d4cb06bcc59c75c}{v1\+::linspace}} (N start, N stop, size\+\_\+t num) -\/$>$ std\+::vector$<$ N $>$
 \begin{DoxyCompactList}\small\item\em Returns num evenly spaced samples, calculate over the interval \mbox{[}start, stop\mbox{]}. \end{DoxyCompactList}\item 
-{\footnotesize template$<$class N $>$ }\\auto \mbox{\hyperlink{oop11v1_8h_a36f391e8ecc3aeb818449b9a4bac6d74}{v1\+::sign}} (N x) -\/$>$ int
+{\footnotesize template$<$class N $>$ }\\requires std\+::totally\+\_\+ordered\+\_\+with$<$ N, int $>$ auto \mbox{\hyperlink{oop11v1_8h_a039a6de9db72750b75320ee29c41dd4d}{v1\+::sign}} (N x) -\/$>$ int
 \begin{DoxyCompactList}\small\item\em The sign function returns -\/1 if x $<$ 0, 0 if x==0, 1 if x $>$ 0. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{oop11v1_8h_aff118f5808ffa23aa501aced8df977f1}\label{oop11v1_8h_aff118f5808ffa23aa501aced8df977f1}} 
+\mbox{\Hypertarget{oop11v1_8h_a9e313d569c2d4b2853ffeab92679b81c}\label{oop11v1_8h_a9e313d569c2d4b2853ffeab92679b81c}} 
 \index{oop11v1.h@{oop11v1.h}!intersections@{intersections}}
 \index{intersections@{intersections}!oop11v1.h@{oop11v1.h}}
 \doxysubsubsection{\texorpdfstring{intersections()}{intersections()}}
 {\footnotesize\ttfamily template$<$class N $>$ \\
-auto v1\+::intersections (\begin{DoxyParamCaption}\item[{std\+::function$<$ N(N)$>$}]{f,  }\item[{std\+::function$<$ N(N)$>$}]{g,  }\item[{std\+::pair$<$ N, N $>$}]{range\+\_\+ }\end{DoxyParamCaption}) -\/$>$ std\+::vector$<$N$>$}
+requires std\+::floating\+\_\+point$<$ N $>$ \&\&std\+::totally\+\_\+ordered\+\_\+with$<$ N, int $>$ auto v1\+::intersections (\begin{DoxyParamCaption}\item[{std\+::function$<$ N(N)$>$}]{f,  }\item[{std\+::function$<$ N(N)$>$}]{g,  }\item[{std\+::pair$<$ N, N $>$}]{range\+\_\+ }\end{DoxyParamCaption}) -\/$>$ std\+::vector$<$N$>$}
 
 
 
@@ -39,18 +40,18 @@ Returns intersections of f and g on range\+\_\+.
 \end{DoxyParams}
 
 \begin{DoxyTemplParams}{Template Parameters}
-{\em N} & Floating point Numeric Type \\
+{\em N} & Floating point Numeric Type orderable with int \\
 \hline
 \end{DoxyTemplParams}
 \begin{DoxyReturn}{Returns}
 vector$<$\+N$>$ of xs in which f and g intersect 
 \end{DoxyReturn}
-\mbox{\Hypertarget{oop11v1_8h_aaab5190f779bbdea588f6475616556ce}\label{oop11v1_8h_aaab5190f779bbdea588f6475616556ce}} 
+\mbox{\Hypertarget{oop11v1_8h_a48a6a46f6854ae009d4cb06bcc59c75c}\label{oop11v1_8h_a48a6a46f6854ae009d4cb06bcc59c75c}} 
 \index{oop11v1.h@{oop11v1.h}!linspace@{linspace}}
 \index{linspace@{linspace}!oop11v1.h@{oop11v1.h}}
 \doxysubsubsection{\texorpdfstring{linspace()}{linspace()}}
 {\footnotesize\ttfamily template$<$class N $>$ \\
-auto v1\+::linspace (\begin{DoxyParamCaption}\item[{N}]{start,  }\item[{N}]{stop,  }\item[{size\+\_\+t}]{num }\end{DoxyParamCaption}) -\/$>$ std\+::vector$<$N$>$}
+requires std\+::floating\+\_\+point$<$ N $>$ \&\&std\+::totally\+\_\+ordered\+\_\+with$<$ N, int $>$ auto v1\+::linspace (\begin{DoxyParamCaption}\item[{N}]{start,  }\item[{N}]{stop,  }\item[{size\+\_\+t}]{num }\end{DoxyParamCaption}) -\/$>$ std\+::vector$<$N$>$}
 
 
 
@@ -67,18 +68,18 @@ Returns num evenly spaced samples, calculate over the interval \mbox{[}start, st
 \end{DoxyParams}
 
 \begin{DoxyTemplParams}{Template Parameters}
-{\em N} & Floating point Numeric Type \\
+{\em N} & Floating point Numeric Type orderable with int \\
 \hline
 \end{DoxyTemplParams}
 \begin{DoxyReturn}{Returns}
 num equally spaced samples in the closed interval \mbox{[}start, stop\mbox{]} 
 \end{DoxyReturn}
-\mbox{\Hypertarget{oop11v1_8h_a36f391e8ecc3aeb818449b9a4bac6d74}\label{oop11v1_8h_a36f391e8ecc3aeb818449b9a4bac6d74}} 
+\mbox{\Hypertarget{oop11v1_8h_a039a6de9db72750b75320ee29c41dd4d}\label{oop11v1_8h_a039a6de9db72750b75320ee29c41dd4d}} 
 \index{oop11v1.h@{oop11v1.h}!sign@{sign}}
 \index{sign@{sign}!oop11v1.h@{oop11v1.h}}
 \doxysubsubsection{\texorpdfstring{sign()}{sign()}}
 {\footnotesize\ttfamily template$<$class N $>$ \\
-auto v1\+::sign (\begin{DoxyParamCaption}\item[{N}]{x }\end{DoxyParamCaption}) -\/$>$ int}
+requires std\+::totally\+\_\+ordered\+\_\+with$<$ N, int $>$ auto v1\+::sign (\begin{DoxyParamCaption}\item[{N}]{x }\end{DoxyParamCaption}) -\/$>$ int}
 
 
 
@@ -91,7 +92,7 @@ The sign function returns -\/1 if x $<$ 0, 0 if x==0, 1 if x $>$ 0.
 \end{DoxyParams}
 
 \begin{DoxyTemplParams}{Template Parameters}
-{\em N} & Numeric Type \\
+{\em N} & Numeric Type ordererable with int \\
 \hline
 \end{DoxyTemplParams}
 \begin{DoxyReturn}{Returns}
