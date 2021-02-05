@@ -1,6 +1,6 @@
-/// @file oop11.h
-#ifndef OOP11_H
-#define OOP11_H
+/// @file oop11v1.h
+#ifndef OOP11V1_H
+#define OOP11V1_H
 
 #include <algorithm>
 #include <cmath>
@@ -10,6 +10,7 @@
 #include <ranges>
 #include <vector>
 
+//namespace v1 {
 /**
  * @brief Returns intersections of f and g on range_.
  * @param[in] f y(x) function on 2d plane which exists for all xs in range_
@@ -73,4 +74,5 @@ auto sign(N x) -> int{
 							 : 0;
 }
 
+//}//namespace v1
 #endif
