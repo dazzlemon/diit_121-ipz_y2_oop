@@ -2,6 +2,7 @@
 #ifndef OOP11V1_H
 #define OOP11V1_H
 
+#include "sign.h"
 #include <algorithm>
 #include <cmath>
 #include <concepts>
@@ -36,17 +37,6 @@ template<class N>
 auto linspace(N start, N stop, size_t num) -> std::vector<N>;
 
 
-/**
- * @brief The sign function returns -1 if x < 0, 0 if x==0, 1 if x > 0.
- * @param[in] x input value
- * @tparam N Numeric Type ordererable with int
- * @return The sign of x
- */
-template<class N>
-	requires std::totally_ordered_with<N, int>
-auto sign(N x) -> int;
-
-
 template<class N>
 	requires std::floating_point<N> && std::totally_ordered_with<N, int>
 auto intersections(std::function<N(N)> f, std::function<N(N)> g, std::pair<N, N> range_) -> std::vector<N> {
@@ -68,15 +58,6 @@ auto linspace(N start, N stop, size_t num) -> std::vector<N> {
 	N step = (stop - start) / (num - 1);
 	std::generate(vec.begin(), vec.end(), [n = start - step, step] () mutable {n += step; return n;});
 	return vec;
-}
-
-
-template<class N>
-	requires std::totally_ordered_with<N, int>
-auto sign(N x) -> int {
-	return x > 0 ? 1
-	     : x < 0 ? -1
-	             : 0;
 }
 
 }//namespace v1

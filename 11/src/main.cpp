@@ -11,7 +11,7 @@ auto main() -> int {
 	std::cout << "f(x) = x" << std::endl;
 	std::cout << "g(x) = 10 * cos(x)" << std::endl;
 	std::cout << "f = g on range [0, 10] for xs: ";
-	auto xs = v1::intersections(f, g, range_);
+	auto xs = v2::intersections(f, g, range_);
 	for (auto x : xs) {
 		std::cout << x << " ";
 	}

@@ -2,6 +2,7 @@
 #ifndef OOP11V2_H
 #define OOP11V2_H
 
+#include <concepts>
 #include <functional>
 #include <list>
 
@@ -11,10 +12,11 @@ namespace v2 {
  * @param[in] f y(x) function on 2d plane which exists for all xs in range_
  * @param[in] g y(x) function on 2d plane which exists for all xs in range_
  * @param[in] range_ Range on which intersections between f and g will be searched
- * @tparam N Floating point Numeric Type
+ * @tparam N Floating point Numeric Type orderable with int
  * @return list<N> of xs in which f and g intersect
  */
 template<class N>
+	requires std::floating_point<N> && std::totally_ordered_with<N, int>
 auto intersections(std::function<N(N)> f, std::function<N(N)> g, std::pair<N, N> range_) -> std::list<N>;
 
 
@@ -23,24 +25,16 @@ auto intersections(std::function<N(N)> f, std::function<N(N)> g, std::pair<N, N>
  * @param[in] start The starting value of the sequence
  * @param[in] stop The end value of the sequence
  * @param[in] num Number of samples to generate
- * @tparam N Floating point Numeric Type
+ * @tparam N Floating point Numeric Type orderable with int
  * @return num equally spaced samples in the closed interval [start, stop]
  */ 
 template<class N>
+	requires std::floating_point<N> && std::totally_ordered_with<N, int>
 auto linspace(N start, N stop, size_t num) -> std::list<N>;
 
 
-/**
- * @brief The sign function returns -1 if x < 0, 0 if x==0, 1 if x > 0.
- * @param[in] x input value
- * @tparam N Numeric Type
- * @return The sign of x
- */
 template<class N>
-auto sign(N x) -> int;
-
-
-template<class N>
+	requires std::floating_point<N> && std::totally_ordered_with<N, int>
 auto intersections(std::function<N(N)> f, std::function<N(N)> g, std::pair<N, N> range_) -> std::list<N> {
 	const size_t NUMS = 1000;
 	auto xs = linspace(range_.first, range_.second, NUMS);
@@ -63,6 +57,7 @@ auto intersections(std::function<N(N)> f, std::function<N(N)> g, std::pair<N, N>
 
 
 template<class N>
+	requires std::floating_point<N> && std::totally_ordered_with<N, int>
 auto linspace(N start, N stop, size_t num) -> std::list<N> {
 	std::list<N> l(num);
 	N step = (stop -start) / (num - 1);
@@ -72,14 +67,6 @@ auto linspace(N start, N stop, size_t num) -> std::list<N> {
 		val += step;
 	}
 	return l;
-}
-
-
-template<class N>
-auto sign(N x) -> int {
-	return x > 0 ? 1
-	     : x < 0 ? -1
-	             : 0;
 }
 
 }//namespace v2
