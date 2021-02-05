@@ -12,10 +12,10 @@ namespace v2 {
  * @param[in] g y(x) function on 2d plane which exists for all xs in range_
  * @param[in] range_ Range on which intersections between f and g will be searched
  * @tparam N Floating point Numeric Type
- * @return vector<N> of xs in which f and g intersect
+ * @return list<N> of xs in which f and g intersect
  */
 template<class N>
-auto intersections(std::function<N(N)> f, std::function<N(N)> g, std::pair<N, N> range_) -> std::vector<N>;
+auto intersections(std::function<N(N)> f, std::function<N(N)> g, std::pair<N, N> range_) -> std::list<N>;
 
 
 /**
@@ -27,7 +27,7 @@ auto intersections(std::function<N(N)> f, std::function<N(N)> g, std::pair<N, N>
  * @return num equally spaced samples in the closed interval [start, stop]
  */ 
 template<class N>
-auto linspace(N start, N stop, size_t num) -> std::vector<N>;
+auto linspace(N start, N stop, size_t num) -> std::list<N>;
 
 
 /**
@@ -41,12 +41,37 @@ auto sign(N x) -> int;
 
 
 template<class N>
-auto intersections(std::function<N(N)> f, std::function<N(N)> g, std::pair<N, N> range_) -> std::vector<N> {
+auto intersections(std::function<N(N)> f, std::function<N(N)> g, std::pair<N, N> range_) -> std::list<N> {
+	const size_t NUMS = 1000;
+	auto xs = linspace(range_.first, range_.second, NUMS);
+	std::list<int> signs(NUMS);
+
+	for (auto x = xs.begin(), s = signs.begin(); x != xs.end(); x++, s++) {
+		*s = sign(f(*x) - g(*x));
+	}
+
+	auto res = std::list<N>();
+	
+	for (auto x = xs.begin(), s1 = signs.begin(), s2 = ++signs.begin(); s2 != signs.end(); x++, s1++, s2++) {
+		if (*s1 - *s2 != 0) {
+			res.push_back(*x);
+		}
+	}
+
+	return res;
 }
 
 
 template<class N>
-auto linspace(N start, N stop, size_t num) -> std::vector<N> {
+auto linspace(N start, N stop, size_t num) -> std::list<N> {
+	std::list<N> l(num);
+	N step = (stop -start) / (num - 1);
+	N val = start;
+	for (auto& i : l) {
+		i = val;
+		val += step;
+	}
+	return l;
 }
 
 
