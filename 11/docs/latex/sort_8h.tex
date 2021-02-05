@@ -1,0 +1,42 @@
+\hypertarget{sort_8h}{}\doxysection{/home/dazzlemon/hdd\+\_\+dazzlemon/github/diit\+\_\+121-\/ipz\+\_\+y2\+\_\+oop/11/src/include/sort.h File Reference}
+\label{sort_8h}\index{/home/dazzlemon/hdd\_dazzlemon/github/diit\_121-\/ipz\_y2\_oop/11/src/include/sort.h@{/home/dazzlemon/hdd\_dazzlemon/github/diit\_121-\/ipz\_y2\_oop/11/src/include/sort.h}}
+{\ttfamily \#include $<$concepts$>$}\newline
+{\ttfamily \#include $<$cstddef$>$}\newline
+{\ttfamily \#include $<$utility$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class T $>$ }\\requires std\+::totally\+\_\+ordered$<$ T $>$ void \mbox{\hyperlink{sort_8h_afa2616e64a23aee6c60f22afb3266cf1}{quicksort}} (std\+::vector$<$ T $>$ \&a, size\+\_\+t lo, size\+\_\+t hi)
+\begin{DoxyCompactList}\small\item\em sorts elements of array. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{sort_8h_a32aff32a4f54d84535f8adf9b2a688a2}\label{sort_8h_a32aff32a4f54d84535f8adf9b2a688a2}} 
+{\footnotesize template$<$class T $>$ }\\requires std\+::totally\+\_\+ordered$<$ T $>$ auto {\bfseries details\+::partition} (std\+::vector$<$ T $>$ \&a, size\+\_\+t lo, size\+\_\+t hi) -\/$>$ size\+\_\+t
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{sort_8h_afa2616e64a23aee6c60f22afb3266cf1}\label{sort_8h_afa2616e64a23aee6c60f22afb3266cf1}} 
+\index{sort.h@{sort.h}!quicksort@{quicksort}}
+\index{quicksort@{quicksort}!sort.h@{sort.h}}
+\doxysubsubsection{\texorpdfstring{quicksort()}{quicksort()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+requires std\+::totally\+\_\+ordered$<$ T $>$ void quicksort (\begin{DoxyParamCaption}\item[{std\+::vector$<$ T $>$ \&}]{a,  }\item[{size\+\_\+t}]{lo,  }\item[{size\+\_\+t}]{hi }\end{DoxyParamCaption})}
+
+
+
+sorts elements of array. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a} & Array to be sorted \\
+\hline
+\mbox{\texttt{ in}}  & {\em lo} & Index of first element to be sorted \\
+\hline
+\mbox{\texttt{ in}}  & {\em hi} & Index of last element to be sorted \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Orderable type \\
+\hline
+\end{DoxyTemplParams}

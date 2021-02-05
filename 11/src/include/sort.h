@@ -1,3 +1,4 @@
+/// @file sort.h
 #ifndef SORT_H
 #define SORT_H
 
@@ -11,7 +12,7 @@
  * @param[in] a Array to be sorted
  * @param[in] lo Index of first element to be sorted
  * @param[in] hi Index of last element to be sorted
- * @tparam Orderable type
+ * @tparam T Orderable type
  */
 template<class T>
 	requires std::totally_ordered<T>
