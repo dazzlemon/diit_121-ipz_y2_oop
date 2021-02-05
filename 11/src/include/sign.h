@@ -1,3 +1,4 @@
+/// @file sign.h
 #ifndef SIGN_H
 #define SIGN_H
 
@@ -20,5 +21,4 @@ auto sign(N x) -> int {
 	     : x < 0 ? -1
 	             : 0;
 }
-
 #endif

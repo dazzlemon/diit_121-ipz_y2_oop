@@ -72,7 +72,7 @@ $(function() {
 <a href="oop11v1_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef OOP11V1_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#define OOP11V1_H</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;sign.h&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="sign_8h.html">sign.h</a>&quot;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;concepts&gt;</span></div>
@@ -96,7 +96,7 @@ $(function() {
 <div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="oop11v1_8h.html#a9e313d569c2d4b2853ffeab92679b81c">   42</a></span>&#160;<span class="keyword">auto</span> <a class="code" href="oop11v1_8h.html#a9e313d569c2d4b2853ffeab92679b81c">intersections</a>(std::function&lt;N(N)&gt; f, std::function&lt;N(N)&gt; g, std::pair&lt;N, N&gt; range_) -&gt; std::vector&lt;N&gt; {</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">size_t</span> NUMS = 1000;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">auto</span> xs = <a class="code" href="oop11v1_8h.html#a48a6a46f6854ae009d4cb06bcc59c75c">linspace</a>(range_.first, range_.second, NUMS);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">auto</span> signs = xs | std::views::transform([f, g] (<span class="keyword">auto</span> x) {<span class="keywordflow">return</span> sign(f(x) - g(x));});</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">auto</span> signs = xs | std::views::transform([f, g] (<span class="keyword">auto</span> x) {<span class="keywordflow">return</span> <a class="code" href="sign_8h.html#a4895b31987f8e7b24ce6f37d0a78e16e">sign</a>(f(x) - g(x));});</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">auto</span> signs_vec = std::vector(signs.begin(), signs.end());</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    std::transform(signs_vec.begin(), signs_vec.end(), ++signs_vec.begin(), signs_vec.begin(), [] (<span class="keyword">auto</span> a, <span class="keyword">auto</span> b) {return a - b;});</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    std::transform(xs.begin(), xs.end(), signs_vec.begin(), xs.begin(), [] (<span class="keyword">auto</span> x, <span class="keyword">auto</span> sign_) {return sign_ == 0 ? INFINITY : x;});</div>
@@ -118,6 +118,8 @@ $(function() {
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aoop11v1_8h_html_a48a6a46f6854ae009d4cb06bcc59c75c"><div class="ttname"><a href="oop11v1_8h.html#a48a6a46f6854ae009d4cb06bcc59c75c">v1::linspace</a></div><div class="ttdeci">requires std::floating_point&lt; N &gt; &amp;&amp;std::totally_ordered_with&lt; N, int &gt; auto linspace(N start, N stop, size_t num) -&gt; std::vector&lt; N &gt;</div><div class="ttdoc">Returns num evenly spaced samples, calculate over the interval [start, stop].</div><div class="ttdef"><b>Definition:</b> oop11v1.h:56</div></div>
 <div class="ttc" id="aoop11v1_8h_html_a9e313d569c2d4b2853ffeab92679b81c"><div class="ttname"><a href="oop11v1_8h.html#a9e313d569c2d4b2853ffeab92679b81c">v1::intersections</a></div><div class="ttdeci">requires std::floating_point&lt; N &gt; &amp;&amp;std::totally_ordered_with&lt; N, int &gt; auto intersections(std::function&lt; N(N)&gt; f, std::function&lt; N(N)&gt; g, std::pair&lt; N, N &gt; range_) -&gt; std::vector&lt; N &gt;</div><div class="ttdoc">Returns intersections of f and g on range_.</div><div class="ttdef"><b>Definition:</b> oop11v1.h:42</div></div>
+<div class="ttc" id="asign_8h_html"><div class="ttname"><a href="sign_8h.html">sign.h</a></div></div>
+<div class="ttc" id="asign_8h_html_a4895b31987f8e7b24ce6f37d0a78e16e"><div class="ttname"><a href="sign_8h.html#a4895b31987f8e7b24ce6f37d0a78e16e">sign</a></div><div class="ttdeci">requires std::totally_ordered_with&lt; N, int &gt; auto sign(N x) -&gt; int</div><div class="ttdoc">The sign function returns -1 if x &lt; 0, 0 if x==0, 1 if x &gt; 0.</div><div class="ttdef"><b>Definition:</b> sign.h:19</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

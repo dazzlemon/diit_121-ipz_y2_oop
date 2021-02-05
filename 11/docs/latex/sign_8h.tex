@@ -1,0 +1,35 @@
+\hypertarget{sign_8h}{}\doxysection{/home/dazzlemon/hdd\+\_\+dazzlemon/github/diit\+\_\+121-\/ipz\+\_\+y2\+\_\+oop/11/src/include/sign.h File Reference}
+\label{sign_8h}\index{/home/dazzlemon/hdd\_dazzlemon/github/diit\_121-\/ipz\_y2\_oop/11/src/include/sign.h@{/home/dazzlemon/hdd\_dazzlemon/github/diit\_121-\/ipz\_y2\_oop/11/src/include/sign.h}}
+{\ttfamily \#include $<$concepts$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class N $>$ }\\requires std\+::totally\+\_\+ordered\+\_\+with$<$ N, int $>$ auto \mbox{\hyperlink{sign_8h_a4895b31987f8e7b24ce6f37d0a78e16e}{sign}} (N x) -\/$>$ int
+\begin{DoxyCompactList}\small\item\em The sign function returns -\/1 if x $<$ 0, 0 if x==0, 1 if x $>$ 0. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{sign_8h_a4895b31987f8e7b24ce6f37d0a78e16e}\label{sign_8h_a4895b31987f8e7b24ce6f37d0a78e16e}} 
+\index{sign.h@{sign.h}!sign@{sign}}
+\index{sign@{sign}!sign.h@{sign.h}}
+\doxysubsubsection{\texorpdfstring{sign()}{sign()}}
+{\footnotesize\ttfamily template$<$class N $>$ \\
+requires std\+::totally\+\_\+ordered\+\_\+with$<$ N, int $>$ auto sign (\begin{DoxyParamCaption}\item[{N}]{x }\end{DoxyParamCaption}) -\/$>$ int}
+
+
+
+The sign function returns -\/1 if x $<$ 0, 0 if x==0, 1 if x $>$ 0. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em x} & input value \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em N} & Numeric Type ordererable with int \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+The sign of x 
+\end{DoxyReturn}
