@@ -1,0 +1,38 @@
+\hypertarget{read_8h}{}\doxysection{/home/dazzlemon/hdd\+\_\+dazzlemon/github/diit\+\_\+121-\/ipz\+\_\+y2\+\_\+oop/10/src/include/read.h File Reference}
+\label{read_8h}\index{/home/dazzlemon/hdd\_dazzlemon/github/diit\_121-\/ipz\_y2\_oop/10/src/include/read.h@{/home/dazzlemon/hdd\_dazzlemon/github/diit\_121-\/ipz\_y2\_oop/10/src/include/read.h}}
+{\ttfamily \#include \char`\"{}exceptions.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$menu\+\_\+io.\+h$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class T $>$ }\\auto \mbox{\hyperlink{read_8h_a4a7667e48b5e269c77aa1f5748deefd0}{read}} () -\/$>$ T
+\begin{DoxyCompactList}\small\item\em Returns T object read from std\+::cin. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{read_8h_a4a7667e48b5e269c77aa1f5748deefd0}\label{read_8h_a4a7667e48b5e269c77aa1f5748deefd0}} 
+\index{read.h@{read.h}!read@{read}}
+\index{read@{read}!read.h@{read.h}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+auto read (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) -\/$>$ T }
+
+
+
+Returns T object read from std\+::cin. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Type to be read from std\+::cin \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+T object read from std\+::cin 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classbad__str}{bad\+\_\+str}}} & Thrown if any errors occured while reading from std\+::cin\\
+\hline
+\end{DoxyExceptions}
+Tries to read T object from std\+::cin. In case of any errors throws \mbox{\hyperlink{classbad__str}{bad\+\_\+str}} exception. 

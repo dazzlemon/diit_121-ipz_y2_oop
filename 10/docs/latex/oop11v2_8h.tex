@@ -1,0 +1,71 @@
+\hypertarget{oop11v2_8h}{}\doxysection{/home/dazzlemon/hdd\+\_\+dazzlemon/github/diit\+\_\+121-\/ipz\+\_\+y2\+\_\+oop/11/src/include/oop11v2.h File Reference}
+\label{oop11v2_8h}\index{/home/dazzlemon/hdd\_dazzlemon/github/diit\_121-\/ipz\_y2\_oop/11/src/include/oop11v2.h@{/home/dazzlemon/hdd\_dazzlemon/github/diit\_121-\/ipz\_y2\_oop/11/src/include/oop11v2.h}}
+{\ttfamily \#include $<$concepts$>$}\newline
+{\ttfamily \#include $<$functional$>$}\newline
+{\ttfamily \#include $<$list$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class N $>$ }\\requires std\+::floating\+\_\+point$<$ N $>$ \&\&std\+::totally\+\_\+ordered\+\_\+with$<$ N, int $>$ auto \mbox{\hyperlink{oop11v2_8h_aa04e23a8af691219fd18984eb4f068e0}{v2\+::intersections}} (std\+::function$<$ N(N)$>$ f, std\+::function$<$ N(N)$>$ g, std\+::pair$<$ N, N $>$ range\+\_\+) -\/$>$ std\+::list$<$ N $>$
+\begin{DoxyCompactList}\small\item\em Returns intersections of f and g on range\+\_\+. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class N $>$ }\\requires std\+::floating\+\_\+point$<$ N $>$ \&\&std\+::totally\+\_\+ordered\+\_\+with$<$ N, int $>$ auto \mbox{\hyperlink{oop11v2_8h_aea5adae5f27133c8594240a8cf0042ce}{v2\+::linspace}} (N start, N stop, size\+\_\+t num) -\/$>$ std\+::list$<$ N $>$
+\begin{DoxyCompactList}\small\item\em Returns num evenly spaced samples, calculate over the interval \mbox{[}start, stop\mbox{]}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{oop11v2_8h_aa04e23a8af691219fd18984eb4f068e0}\label{oop11v2_8h_aa04e23a8af691219fd18984eb4f068e0}} 
+\index{oop11v2.h@{oop11v2.h}!intersections@{intersections}}
+\index{intersections@{intersections}!oop11v2.h@{oop11v2.h}}
+\doxysubsubsection{\texorpdfstring{intersections()}{intersections()}}
+{\footnotesize\ttfamily template$<$class N $>$ \\
+requires std\+::floating\+\_\+point$<$ N $>$ \&\&std\+::totally\+\_\+ordered\+\_\+with$<$ N, int $>$ auto v2\+::intersections (\begin{DoxyParamCaption}\item[{std\+::function$<$ N(N)$>$}]{f,  }\item[{std\+::function$<$ N(N)$>$}]{g,  }\item[{std\+::pair$<$ N, N $>$}]{range\+\_\+ }\end{DoxyParamCaption}) -\/$>$ std\+::list$<$N$>$}
+
+
+
+Returns intersections of f and g on range\+\_\+. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em f} & y(x) function on 2d plane which exists for all xs in range\+\_\+ \\
+\hline
+\mbox{\texttt{ in}}  & {\em g} & y(x) function on 2d plane which exists for all xs in range\+\_\+ \\
+\hline
+\mbox{\texttt{ in}}  & {\em range\+\_\+} & Range on which intersections between f and g will be searched \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em N} & Floating point Numeric Type orderable with int \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+list$<$\+N$>$ of xs in which f and g intersect 
+\end{DoxyReturn}
+\mbox{\Hypertarget{oop11v2_8h_aea5adae5f27133c8594240a8cf0042ce}\label{oop11v2_8h_aea5adae5f27133c8594240a8cf0042ce}} 
+\index{oop11v2.h@{oop11v2.h}!linspace@{linspace}}
+\index{linspace@{linspace}!oop11v2.h@{oop11v2.h}}
+\doxysubsubsection{\texorpdfstring{linspace()}{linspace()}}
+{\footnotesize\ttfamily template$<$class N $>$ \\
+requires std\+::floating\+\_\+point$<$ N $>$ \&\&std\+::totally\+\_\+ordered\+\_\+with$<$ N, int $>$ auto v2\+::linspace (\begin{DoxyParamCaption}\item[{N}]{start,  }\item[{N}]{stop,  }\item[{size\+\_\+t}]{num }\end{DoxyParamCaption}) -\/$>$ std\+::list$<$N$>$}
+
+
+
+Returns num evenly spaced samples, calculate over the interval \mbox{[}start, stop\mbox{]}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em start} & The starting value of the sequence \\
+\hline
+\mbox{\texttt{ in}}  & {\em stop} & The end value of the sequence \\
+\hline
+\mbox{\texttt{ in}}  & {\em num} & Number of samples to generate \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em N} & Floating point Numeric Type orderable with int \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+num equally spaced samples in the closed interval \mbox{[}start, stop\mbox{]} 
+\end{DoxyReturn}

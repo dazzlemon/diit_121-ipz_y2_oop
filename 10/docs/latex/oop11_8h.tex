@@ -1,0 +1,101 @@
+\hypertarget{oop11_8h}{}\doxysection{/home/dazzlemon/hdd\+\_\+dazzlemon/github/diit\+\_\+121-\/ipz\+\_\+y2\+\_\+oop/11/src/oop11.h File Reference}
+\label{oop11_8h}\index{/home/dazzlemon/hdd\_dazzlemon/github/diit\_121-\/ipz\_y2\_oop/11/src/oop11.h@{/home/dazzlemon/hdd\_dazzlemon/github/diit\_121-\/ipz\_y2\_oop/11/src/oop11.h}}
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$functional$>$}\newline
+{\ttfamily \#include $<$list$>$}\newline
+{\ttfamily \#include $<$ranges$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class N $>$ }\\auto \mbox{\hyperlink{oop11_8h_a2cf51ed71bfd21e6f974ced9db153d94}{intersections}} (std\+::function$<$ N(N)$>$ f, std\+::function$<$ N(N)$>$ g, std\+::pair$<$ N, N $>$ range\+\_\+) -\/$>$ std\+::vector$<$ N $>$
+\begin{DoxyCompactList}\small\item\em Returns intersections of f and g on range\+\_\+. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class N $>$ }\\auto \mbox{\hyperlink{oop11_8h_a67a8dabfeb582877bfbe4eee131f4176}{linspace}} (N start, N stop, size\+\_\+t num) -\/$>$ std\+::vector$<$ N $>$
+\begin{DoxyCompactList}\small\item\em Returns num evenly spaced samples, calculate over the interval \mbox{[}start, stop\mbox{]}. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class N $>$ }\\auto \mbox{\hyperlink{oop11_8h_a85954a7eccd6584ab5aa6a1ef6efa6e5}{sign}} (N x) -\/$>$ int
+\begin{DoxyCompactList}\small\item\em The sign function returns -\/1 if x $<$ 0, 0 if x==0, 1 if x $>$ 0. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{oop11_8h_a2cf51ed71bfd21e6f974ced9db153d94}\label{oop11_8h_a2cf51ed71bfd21e6f974ced9db153d94}} 
+\index{oop11.h@{oop11.h}!intersections@{intersections}}
+\index{intersections@{intersections}!oop11.h@{oop11.h}}
+\doxysubsubsection{\texorpdfstring{intersections()}{intersections()}}
+{\footnotesize\ttfamily template$<$class N $>$ \\
+auto intersections (\begin{DoxyParamCaption}\item[{std\+::function$<$ N(N)$>$}]{f,  }\item[{std\+::function$<$ N(N)$>$}]{g,  }\item[{std\+::pair$<$ N, N $>$}]{range\+\_\+ }\end{DoxyParamCaption}) -\/$>$ std\+::vector$<$N$>$}
+
+
+
+Returns intersections of f and g on range\+\_\+. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em f} & y(x) function on 2d plane which exists for all xs in range\+\_\+ \\
+\hline
+\mbox{\texttt{ in}}  & {\em g} & y(x) function on 2d plane which exists for all xs in range\+\_\+ \\
+\hline
+\mbox{\texttt{ in}}  & {\em range\+\_\+} & Range on which intersections between f and g will be searched \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em N} & Numeric Type \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+vector$<$\+N$>$ of xs in which f and g intersect 
+\end{DoxyReturn}
+\mbox{\Hypertarget{oop11_8h_a67a8dabfeb582877bfbe4eee131f4176}\label{oop11_8h_a67a8dabfeb582877bfbe4eee131f4176}} 
+\index{oop11.h@{oop11.h}!linspace@{linspace}}
+\index{linspace@{linspace}!oop11.h@{oop11.h}}
+\doxysubsubsection{\texorpdfstring{linspace()}{linspace()}}
+{\footnotesize\ttfamily template$<$class N $>$ \\
+auto linspace (\begin{DoxyParamCaption}\item[{N}]{start,  }\item[{N}]{stop,  }\item[{size\+\_\+t}]{num }\end{DoxyParamCaption}) -\/$>$ std\+::vector$<$N$>$}
+
+
+
+Returns num evenly spaced samples, calculate over the interval \mbox{[}start, stop\mbox{]}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em start} & The starting value of the sequence \\
+\hline
+\mbox{\texttt{ in}}  & {\em stop} & The end value of the sequence \\
+\hline
+\mbox{\texttt{ in}}  & {\em num} & Number of samples to generate \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em N} & Floating point Numeric Type \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+num equally spaced samples in the closed interval \mbox{[}start, stop\mbox{]} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{oop11_8h_a85954a7eccd6584ab5aa6a1ef6efa6e5}\label{oop11_8h_a85954a7eccd6584ab5aa6a1ef6efa6e5}} 
+\index{oop11.h@{oop11.h}!sign@{sign}}
+\index{sign@{sign}!oop11.h@{oop11.h}}
+\doxysubsubsection{\texorpdfstring{sign()}{sign()}}
+{\footnotesize\ttfamily template$<$class N $>$ \\
+auto sign (\begin{DoxyParamCaption}\item[{N}]{x }\end{DoxyParamCaption}) -\/$>$ int}
+
+
+
+The sign function returns -\/1 if x $<$ 0, 0 if x==0, 1 if x $>$ 0. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em x} & input value \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em N} & Numeric Type \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+The sign of x 
+\end{DoxyReturn}
