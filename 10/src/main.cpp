@@ -15,6 +15,9 @@ auto main() -> int {
 			"Insert value @index.",
 			item_idx_getter,
 			[&] (size_t idx) {
+				if (idx > items.size()) {
+					throw bad_item_idx();
+				}
 				std::cout << "Input a integer to insert @" << idx + 1 << ":" << std::endl;
 				auto i = read<int>();
 				items.insert(items.begin() + idx, i);
@@ -24,6 +27,9 @@ auto main() -> int {
 			"Erase value @index.",
 			item_idx_getter,
 			[&] (size_t idx) {
+				if (idx >= items.size()) {
+					throw bad_item_idx();
+				}
 				items.erase(items.begin() + idx);
 			}
 		)
@@ -47,6 +53,16 @@ auto main() -> int {
 		} catch (bad_item_idx& e) {
 			std::cout << "Out of range item choice!" << std::endl;
 		}
-		is_running = read_exit_choice();
+
+		bool got_choice = false;
+
+		while (!got_choice) {
+			try {
+				is_running = read_exit_choice();
+				got_choice = true;
+			} catch (bad_str& e) {
+				std::cout << "Invalid input, try again." << std::endl;
+			}
+		}
   }
 }

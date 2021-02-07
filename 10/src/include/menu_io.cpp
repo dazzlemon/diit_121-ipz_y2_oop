@@ -8,13 +8,17 @@ auto read_menu_index(const std::vector<menu_choice>& choices) -> size_t {
 	for (size_t i = 0; i < choices.size(); i++) {
 		std::cout << i + 1 << ". " << choices[i].getStr() << std::endl;
 	}
-	return read<int>() - 1;
+	auto r = read<size_t>();
+	if (r > choices.size()) {
+		throw bad_menu_idx();
+	}
+	return r - 1;
 }
 
 
 auto read_item_index(const menu_choice& mc) -> size_t {
 	std::cout << mc.getPrompt() << std::endl;
-	return read<int>() - 1;
+	return read<size_t>() - 1;
 }
 
 
