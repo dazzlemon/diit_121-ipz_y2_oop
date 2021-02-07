@@ -1,0 +1,81 @@
+\hypertarget{menu__io_8h}{}\doxysection{/home/dazzlemon/hdd\+\_\+dazzlemon/github/diit\+\_\+121-\/ipz\+\_\+y2\+\_\+oop/10/src/include/menu\+\_\+io.h File Reference}
+\label{menu__io_8h}\index{/home/dazzlemon/hdd\_dazzlemon/github/diit\_121-\/ipz\_y2\_oop/10/src/include/menu\_io.h@{/home/dazzlemon/hdd\_dazzlemon/github/diit\_121-\/ipz\_y2\_oop/10/src/include/menu\_io.h}}
+{\ttfamily \#include \char`\"{}menu\+\_\+choice.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$exception$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+auto \mbox{\hyperlink{menu__io_8h_a6fd2f0960ffe47a6e875ced46d184422}{read\+\_\+menu\+\_\+index}} (const std\+::vector$<$ \mbox{\hyperlink{classmenu__choice}{menu\+\_\+choice}} $>$ \&choices) -\/$>$ size\+\_\+t
+\begin{DoxyCompactList}\small\item\em Gets a $>$=0 index from std\+::cin. \end{DoxyCompactList}\item 
+auto \mbox{\hyperlink{menu__io_8h_a45a0f5536431e9d4115f1ab6f5b2b3d4}{read\+\_\+item\+\_\+index}} (const \mbox{\hyperlink{classmenu__choice}{menu\+\_\+choice}} \&mc) -\/$>$ size\+\_\+t
+\begin{DoxyCompactList}\small\item\em Reads a size\+\_\+t value from std\+::cin. \end{DoxyCompactList}\item 
+auto \mbox{\hyperlink{menu__io_8h_a152fe8c07d4b42bcac6622d2dae50281}{read\+\_\+exit\+\_\+choice}} () -\/$>$ bool
+\begin{DoxyCompactList}\small\item\em Returns false if program should stop it\textquotesingle{}s process. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{menu__io_8h_a152fe8c07d4b42bcac6622d2dae50281}\label{menu__io_8h_a152fe8c07d4b42bcac6622d2dae50281}} 
+\index{menu\_io.h@{menu\_io.h}!read\_exit\_choice@{read\_exit\_choice}}
+\index{read\_exit\_choice@{read\_exit\_choice}!menu\_io.h@{menu\_io.h}}
+\doxysubsubsection{\texorpdfstring{read\_exit\_choice()}{read\_exit\_choice()}}
+{\footnotesize\ttfamily auto read\+\_\+exit\+\_\+choice (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) -\/$>$  bool}
+
+
+
+Returns false if program should stop it\textquotesingle{}s process. 
+
+\begin{DoxyReturn}{Returns}
+bool interpolated from std\+::cin 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classbad__str}{bad\+\_\+str}}} & Thrown in case of wrong input from std\+::cin\\
+\hline
+\end{DoxyExceptions}
+Prompts user from std\+::cout. Reads value from std\+::cin. If value is \textquotesingle{}Y\textquotesingle{} or \textquotesingle{}y\textquotesingle{} returns true. If value is \textquotesingle{}N\textquotesingle{} or \textquotesingle{}n\textquotesingle{} returns false. In case of any other inputs throws \mbox{\hyperlink{classbad__str}{bad\+\_\+str}} exception/ \mbox{\Hypertarget{menu__io_8h_a45a0f5536431e9d4115f1ab6f5b2b3d4}\label{menu__io_8h_a45a0f5536431e9d4115f1ab6f5b2b3d4}} 
+\index{menu\_io.h@{menu\_io.h}!read\_item\_index@{read\_item\_index}}
+\index{read\_item\_index@{read\_item\_index}!menu\_io.h@{menu\_io.h}}
+\doxysubsubsection{\texorpdfstring{read\_item\_index()}{read\_item\_index()}}
+{\footnotesize\ttfamily auto read\+\_\+item\+\_\+index (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classmenu__choice}{menu\+\_\+choice}} \&}]{mc }\end{DoxyParamCaption}) -\/$>$  size\+\_\+t}
+
+
+
+Reads a size\+\_\+t value from std\+::cin. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em mc} & An object to get\+Prompt() from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+size\+\_\+t from std\+::cin 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classbad__str}{bad\+\_\+str}}} & Thrown if any errors occured while reading from std\+::cin\\
+\hline
+\end{DoxyExceptions}
+Prints mc.\+get\+Prompt() to std\+::cout. Reads size\+\_\+t from std\+::cin, returns decremented value. In case of any errors throws \mbox{\hyperlink{classbad__str}{bad\+\_\+str}} exception. \mbox{\Hypertarget{menu__io_8h_a6fd2f0960ffe47a6e875ced46d184422}\label{menu__io_8h_a6fd2f0960ffe47a6e875ced46d184422}} 
+\index{menu\_io.h@{menu\_io.h}!read\_menu\_index@{read\_menu\_index}}
+\index{read\_menu\_index@{read\_menu\_index}!menu\_io.h@{menu\_io.h}}
+\doxysubsubsection{\texorpdfstring{read\_menu\_index()}{read\_menu\_index()}}
+{\footnotesize\ttfamily auto read\+\_\+menu\+\_\+index (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{classmenu__choice}{menu\+\_\+choice}} $>$ \&}]{choices }\end{DoxyParamCaption}) -\/$>$  size\+\_\+t}
+
+
+
+Gets a $>$=0 index from std\+::cin. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em choices} & Vector of menu choices for user to choose from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Correct index to acces element from choices 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classbad__menu__idx}{bad\+\_\+menu\+\_\+idx}}} & Thrown if user input is out of available range(size of choices vector) \\
+\hline
+\end{DoxyExceptions}

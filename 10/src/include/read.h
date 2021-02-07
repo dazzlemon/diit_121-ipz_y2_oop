@@ -22,7 +22,6 @@ auto read() -> T {
 	if (!std::cin || std::cin.get() != '\n') {
 		std::cin.clear();
 		while (std::cin.get() != '\n') {}
-
 		throw bad_str();
 	}
 	return res;

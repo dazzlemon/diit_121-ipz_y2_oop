@@ -69,19 +69,26 @@ $(function() {
 <div class="title">menu_io.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef MENU_IO_H </span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define MENU_IO_H </span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;menu_choice.h&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;exception&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;  </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">auto</span> read_menu_index(<span class="keyword">const</span> std::vector&lt;menu_choice&gt;&amp; choices) -&gt; size_t;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">auto</span> read_item_index(<span class="keyword">const</span> <a class="code" href="classmenu__choice.html">menu_choice</a>&amp; mc) -&gt; size_t;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">auto</span> read_exit_choice() -&gt; bool;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#endif</span></div>
+<a href="menu__io_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef MENU_IO_H </span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#define MENU_IO_H </span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;menu_choice.h&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;exception&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">auto</span> <a class="code" href="menu__io_8h.html#a6fd2f0960ffe47a6e875ced46d184422">read_menu_index</a>(<span class="keyword">const</span> std::vector&lt;menu_choice&gt;&amp; choices) -&gt; size_t;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">auto</span> <a class="code" href="menu__io_8h.html#a45a0f5536431e9d4115f1ab6f5b2b3d4">read_item_index</a>(<span class="keyword">const</span> <a class="code" href="classmenu__choice.html">menu_choice</a>&amp; mc) -&gt; size_t;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">auto</span> <a class="code" href="menu__io_8h.html#a152fe8c07d4b42bcac6622d2dae50281">read_exit_choice</a>() -&gt; bool;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassmenu__choice_html"><div class="ttname"><a href="classmenu__choice.html">menu_choice</a></div><div class="ttdef"><b>Definition:</b> menu_choice.h:8</div></div>
+<div class="ttc" id="amenu__io_8h_html_a152fe8c07d4b42bcac6622d2dae50281"><div class="ttname"><a href="menu__io_8h.html#a152fe8c07d4b42bcac6622d2dae50281">read_exit_choice</a></div><div class="ttdeci">auto read_exit_choice() -&gt; bool</div><div class="ttdoc">Returns false if program should stop it's process.</div><div class="ttdef"><b>Definition:</b> menu_io.cpp:25</div></div>
+<div class="ttc" id="amenu__io_8h_html_a45a0f5536431e9d4115f1ab6f5b2b3d4"><div class="ttname"><a href="menu__io_8h.html#a45a0f5536431e9d4115f1ab6f5b2b3d4">read_item_index</a></div><div class="ttdeci">auto read_item_index(const menu_choice &amp;mc) -&gt; size_t</div><div class="ttdoc">Reads a size_t value from std::cin.</div><div class="ttdef"><b>Definition:</b> menu_io.cpp:19</div></div>
+<div class="ttc" id="amenu__io_8h_html_a6fd2f0960ffe47a6e875ced46d184422"><div class="ttname"><a href="menu__io_8h.html#a6fd2f0960ffe47a6e875ced46d184422">read_menu_index</a></div><div class="ttdeci">auto read_menu_index(const std::vector&lt; menu_choice &gt; &amp;choices) -&gt; size_t</div><div class="ttdoc">Gets a &gt;=0 index from std::cin.</div><div class="ttdef"><b>Definition:</b> menu_io.cpp:7</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
