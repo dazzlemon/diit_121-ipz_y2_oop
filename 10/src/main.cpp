@@ -1,6 +1,7 @@
 #include "exceptions.h"
 #include "menu_choice.h"
 #include "menu_io.h"
+#include "read.h"
 #include <cstddef>
 #include <iostream>
 #include <vector>
@@ -8,28 +9,34 @@
 auto main() -> int {
 	std::vector<int> items;
 
-	auto item_idx_getter = [max = items.size()] () -> std::string {return "size of array is: " + std::to_string(max) + ", choose index to check: ";};
+	auto item_idx_getter = [&] () -> std::string {return "size of array is: " + std::to_string(items.size()) + ", choose index: ";};
 	std::vector<menu_choice> choices {
 		menu_choice(
-			"Get value @index.",
+			"Insert value @index.",
 			item_idx_getter,
-			[items] (size_t idx) {std::cout << "value at " + std::to_string(idx) + " is: " + std::to_string(items[idx]);}
-		),
-		menu_choice(
-			"Insert value after index.",
-			item_idx_getter,
-			[] (size_t idx) {idx++;}
+			[&] (size_t idx) {
+				std::cout << "Input a integer to insert @" << idx + 1 << ":" << std::endl;
+				auto i = read<int>();
+				items.insert(items.begin() + idx, i);
+			}
 		),
 		menu_choice(
 			"Erase value @index.",
 			item_idx_getter,
-			[] (size_t idx) {idx++;}
+			[&] (size_t idx) {
+				items.erase(items.begin() + idx);
+			}
 		)
 	};
   
 	auto is_running = true;
 	while (is_running) {
 		try {
+			std::cout << "array: ";
+			for (auto i : items) {
+				std::cout << i << " ";
+			}
+			std::cout << std::endl;
 			auto menu_idx = read_menu_index(choices);
 			auto item_idx = read_item_index(choices[menu_idx]);
 			choices[menu_idx](item_idx);
