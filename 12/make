@@ -1,0 +1,1 @@
+g++ -Isrc/include -std=c++20 -Wall -Wextra -Werror -g src/main.cpp src/include/gazetteer.cpp -o main
