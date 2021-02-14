@@ -3,12 +3,21 @@
 #include <iostream>
 #include <vector>
 
+const std::string UA_LONG = "Ukraine is a country in Eastern Europe. It is bordered by Russia to the east and north-east; Belarus to the north; Poland, Slovakia and Hungary to the west; and Romania, Moldova, Crimea, and the Black Sea to the south. Including Crimea, Ukraine has an area of 603,628 km², and is the second-largest country in Europe after Russia.";
+const std::string USA_LONG = "The United States—officially the United States of America, commonly known as America—is a country primarily located in North America, consisting of 50 states, a federal district, five major self-governing territories, 326 reservations, and various possessions.";
+
+const std::string UA_SHORT1 = "Country of Eastern Europe.";
+const std::string UA_SHORT2 = "Second-largest country in Europe after Russia.";
+
+const std::string CHINA_SHORT1 = "Most populous country in the world.";
+const std::string CHINA_SHORT2 = "Third-largest(by area) country in the world.";
+
 void testGazetteerDynamicGood() {
 	auto gazetteer = GazetteerDynamic();
-	gazetteer.insertInfo("Ukraine", "Country of Eastern Europe.");
-	gazetteer.insertInfo("Ukraine", "Second-largest country in Europe after Russia.");
-	gazetteer.insertInfo("China", "Most populous country in the world.");
-	gazetteer.insertInfo("China", "Third-largest(by area) country in the world.");
+	gazetteer.insertInfo("Ukraine", UA_SHORT1);
+	gazetteer.insertInfo("Ukraine", UA_SHORT2);
+	gazetteer.insertInfo("China", CHINA_SHORT1); 
+	gazetteer.insertInfo("China", CHINA_SHORT1);
 
 	std::cout << "GazetteerDynamic tests with correct input:" << std::endl;
 	std::cout << "\t" << R"(insertInfo("Ukraine", "Country of Eastern Europe.");)" << std::endl;
@@ -57,8 +66,8 @@ void testGazetteerDynamicBad() {
 
 void testGazetteerGood() {
 	auto gazetteer = Gazetteer();
-	gazetteer.insert("Ukraine", "Ukraine is a country in Eastern Europe. It is bordered by Russia to the east and north-east; Belarus to the north; Poland, Slovakia and Hungary to the west; and Romania, Moldova, Crimea, and the Black Sea to the south. Including Crimea, Ukraine has an area of 603,628 km², and is the second-largest country in Europe after Russia.");
-	gazetteer.insert("USA", "The United States—officially the United States of America, commonly known as America—is a country primarily located in North America, consisting of 50 states, a federal district, five major self-governing territories, 326 reservations, and various possessions.");
+	gazetteer.insert("Ukraine", UA_LONG);
+	gazetteer.insert("USA", USA_LONG);
 
 		auto countries = std::vector {
 		"Ukraine",
@@ -82,8 +91,8 @@ void testGazetteerGood() {
 
 void testGazetteerBad() {
 	auto gazetteer = Gazetteer();
-	gazetteer.insert("Ukraine", "Ukraine is a country in Eastern Europe. It is bordered by Russia to the east and north-east; Belarus to the north; Poland, Slovakia and Hungary to the west; and Romania, Moldova, Crimea, and the Black Sea to the south. Including Crimea, Ukraine has an area of 603,628 km², and is the second-largest country in Europe after Russia.");
-	gazetteer.insert("USA", "The United States—officially the United States of America, commonly known as America—is a country primarily located in North America, consisting of 50 states, a federal district, five major self-governing territories, 326 reservations, and various possessions.");
+	gazetteer.insert("Ukraine", UA_LONG);
+	gazetteer.insert("USA", USA_LONG);
 
 	auto countries = std::vector {
 		"Ukraine",
