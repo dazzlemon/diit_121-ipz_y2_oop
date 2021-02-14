@@ -17,7 +17,7 @@ public:
 	}
 
 	auto insert(const std::string& country, const std::string info) -> bool {
-		bool ret = this->dict.contains(country);
+		bool ret = !this->dict.contains(country);
 		this->dict.insert({country, info});
 		return ret;
 	}

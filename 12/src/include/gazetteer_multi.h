@@ -1,12 +1,12 @@
-/// @file gazetteer_dynamic.h
-#ifndef GAZETTEER_DYNAMIC_H
-#define GAZETTEER_DYNAMIC_H
+/// @file gazetteer_multi.h
+#ifndef GAZETTEER_MULTI_H
+#define GAZETTEER_MULTI_H
 
 #include <map>
 #include <string>
 #include <vector>
 
-class GazetteerDynamic {
+class GazetteerMulti {
 	std::multimap<std::string, std::string> multidict;
 public:
 	void insertInfo(const std::string& country, const std::string data) {
