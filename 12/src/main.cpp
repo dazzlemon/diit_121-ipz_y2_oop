@@ -86,6 +86,8 @@ void testGazetteerBad() {
 	gazetteer.insert("USA", "The United States—officially the United States of America, commonly known as America—is a country primarily located in North America, consisting of 50 states, a federal district, five major self-governing territories, 326 reservations, and various possessions.");
 
 	auto countries = std::vector {
+		"Ukraine",
+		"USA",
 		"Spain",
 		"China",
 		"India"
@@ -95,13 +97,13 @@ void testGazetteerBad() {
 	std::cout << "\t" << R"(insert("Ukraine", "...");)" << std::endl;
 	std::cout << "\t" << R"(insert("USA", "...");)" << std::endl;
 	for (auto country : countries) {
-		std::cout << "\t" << country << ": " << gazetteer.getInfo(country) << std::endl;
+		std::cout << "\t\t" << country << ": " << gazetteer.getInfo(country) << std::endl;
 	}
 
 	auto ret = gazetteer.insert("Ukraine", "New info about Ukraine.");
 	std::cout << "\t" << R"(insert("Ukraine", "New info about Ukraine.");)" << " -> " << std::boolalpha << ret << std::endl;
 	for (auto country : countries) {
-		std::cout << "\t" << country << ": " << gazetteer.getInfo(country) << std::endl;
+		std::cout << "\t\t" << country << ": " << gazetteer.getInfo(country) << std::endl;
 	}
 }
 
