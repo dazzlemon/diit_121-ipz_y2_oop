@@ -6,13 +6,24 @@
 #include <string>
 
 class Gazetteer {
-	static const std::map<std::string, std::string> dict;
+	std::map<std::string, std::string> dict;
 public:
-	static auto getInfo(const std::string& country) -> std::string {
-		if (Gazetteer::dict.contains(country)) {// try catch would prolly be more efficient but more verbose
-			return Gazetteer::dict.at(country);
+	auto getInfo(const std::string& country) -> std::string {
+		auto val = this->dict.find(country);
+		if (val == this->dict.end()) {
+			return "No info about this country.";
 		}
-		return "No info about this country.";
+		return val->second;
+	}
+
+	auto insert(const std::string& country, const std::string info) -> bool {
+		bool ret = this->dict.contains(country);
+		this->dict.insert({country, info});
+		return ret;
+	}
+
+	auto insert_force(const std::string& country, const std::string info) -> bool {
+		return this->dict.insert_or_assign(country, info).second;
 	}
 };
 

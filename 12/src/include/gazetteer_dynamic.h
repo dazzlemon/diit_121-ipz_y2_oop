@@ -20,7 +20,11 @@ public:
 			info.push_back(first->second);
 		}
 		return info;
-	} 
+	}
+
+	void removeCountry(const std::string& country) {
+		multidict.erase(country);
+	}
 };
 
 #endif
