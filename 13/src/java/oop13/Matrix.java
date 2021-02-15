@@ -8,18 +8,21 @@ public class Matrix <T> {
 	public final int height;
 	private List<List<T>> matrix;
 
-	public Matrix(int height, int width) {
-		this.width  = width;
+	public Matrix(int height, int width, T filler) {
 		this.height = height;
+		this.width  = width;
 		
 		this.matrix = new ArrayList<>(height);
 		for (int i = 0; i < height; i++) {
-			this.matrix.set(i, new ArrayList<>(width));
+			this.matrix.add(i, new ArrayList<>(width));
+			for (int j = 0; j < width; j++) {
+				this.matrix.get(i).add(filler);
+			}
 		}
 	}
 
 	public void set(int i, int j, T val) {
-		this.matrix[i][j] = val;
+		this.matrix.get(i).set(j, val);
 	}
 
 	public T get(int i, int j) {
