@@ -28,12 +28,4 @@ public class Matrix <T> {
 	public T get(int i, int j) {
 		return this.matrix.get(i).get(j);
 	}
-
-	public void swapRows(int idx1, int idx2) {
-		//
-	}
-
-	public void swapColumns(int idx1, int idx2) {
-		//
-	}
 }

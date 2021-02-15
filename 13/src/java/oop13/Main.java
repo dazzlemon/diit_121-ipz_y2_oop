@@ -5,7 +5,7 @@ public class Main {
 		var matrix = new Matrix<Integer>(4, 3, 0);
 		for (int i = 0; i < matrix.height; i++) {
 			for (int j = 0; j < matrix.width; j++) {
-				matrix.set(i, j, i + j);
+				matrix.set(i, j, i * matrix.width + j);
 			}
 		}
 
