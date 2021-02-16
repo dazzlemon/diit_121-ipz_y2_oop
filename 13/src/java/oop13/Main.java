@@ -29,7 +29,7 @@ public class Main {
 				
 		Solver.swapRows(matrix, 0, x);
 		Solver.swapColumns(matrix, 0, y);
-		print(matrix, indices, zero);
+		print(matrix, zero, indices);
 	}
 
 	public static <T> void print(Matrix<T> matrix, Point pMax, Point p) {
