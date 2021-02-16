@@ -25,10 +25,10 @@ public class Main {
 		for (int i = 0; i < matrix.height; i++) {
 			for (int j = 0; j < matrix.width; j++) {
 				var color = ((i == x || j == y) && (i == 0 || j == 0)) ? ANSI_GREEN_BACKGROUND
-					        : (i == x && j == y) ? ANSI_CYAN_BACKGROUND
+				          : (i == x && j == y) ? ANSI_CYAN_BACKGROUND
 				          : (i == x || j == y) ? ANSI_LIGHT_CYAN_BACKGROUND
 				          : (i == 0 && j == 0) ? ANSI_YELLOW_BACKGROUND
-									: (i == 0 || j == 0) ? ANSI_LIGHT_YELLOW_BACKGROUND
+				          : (i == 0 || j == 0) ? ANSI_LIGHT_YELLOW_BACKGROUND
 				                               : ANSI_RESET;
 				System.out.printf(color + "%" + maxLen + "d ", matrix.get(i, j));
 			}
