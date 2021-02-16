@@ -1,2 +1,3 @@
 javac -cp src/java -d bin/java src/java/oop13/Main.java \
-	src/java/oop13/Matrix.java
+	src/java/oop13/Matrix.java \
+	src/java/oop13/Solver.java
