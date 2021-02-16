@@ -13,7 +13,7 @@ public class Main {
 		var x = indices.x;
 		var y = indices.y;
 
-		print(matrix, indices, zero);
+		MatrixIO.print(matrix, indices, zero);
 		System.out.println();
 				
 		Solver.swapRows(matrix, 0, x);
