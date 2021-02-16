@@ -21,13 +21,10 @@ public class Main {
 
 		for (int i = 0; i < matrix.height; i++) {
 			for (int j = 0; j < matrix.width; j++) {
-				if (i == x && j == y) {
-					System.out.printf(ANSI_BLUE_BACKGROUND + "%" + maxLen + "d ", matrix.get(i, j));
-				} else if (i == x || j == y) {
-					System.out.printf(ANSI_CYAN_BACKGROUND + "%" + maxLen + "d ", matrix.get(i, j));
-				} else {
-					System.out.printf(ANSI_BLACK_BACKGROUND + "%" + maxLen + "d ", matrix.get(i, j));
-				}
+				var color = (i == x && j == y) ? ANSI_BLUE_BACKGROUND
+				          : (i == x || j == y) ? ANSI_CYAN_BACKGROUND
+				                               : ANSI_BLACK_BACKGROUND;
+				System.out.printf(color + "%" + maxLen + "d ", matrix.get(i, j));
 			}
 			System.out.println(ANSI_BLACK_BACKGROUND);
 		}
