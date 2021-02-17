@@ -1,10 +1,22 @@
 package oop13;
 
 import java.awt.Point;
+import java.util.Scanner;
 
 public class Main {
-		public static void main(String[] args) {
-		var matrix = new Matrix<Integer>(5, 10, 0);
+	public static void main(String[] args) {
+		
+		var in = new Scanner(System.in);
+
+		System.out.print("Input matrix' height: ");
+		var h = in.nextInt();
+		System.out.println();
+
+		System.out.print("Input matrix' width: ");
+		var w = in.nextInt();
+		System.out.println();
+
+		var matrix = new Matrix<Integer>(h, w, 0);
 		MatrixIO.read(matrix);
 
 		var zero = new Point(0, 0);
