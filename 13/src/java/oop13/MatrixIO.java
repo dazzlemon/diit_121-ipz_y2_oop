@@ -1,6 +1,7 @@
 package oop13;
 
 import java.awt.Point;
+import java.util.Random;
 
 public class MatrixIO {
 	public static final String ANSI_GREEN_BACKGROUND = "\u001B[42m";
@@ -14,6 +15,15 @@ public class MatrixIO {
 		for (int i = 0; i < matrix.height; i++) {
 			for (int j = 0; j < matrix.width; j++) {
 				matrix.set(i, j, i * matrix.width + j);
+			}
+		}
+	}
+
+	public static void randFill(Matrix<Integer> matrix) {
+		var r = new Random();
+		for (int i = 0; i < matrix.height; i++) {
+			for (int j = 0; j < matrix.width; j++) {
+				matrix.set(i, j, r.nextInt(100));
 			}
 		}
 	}
