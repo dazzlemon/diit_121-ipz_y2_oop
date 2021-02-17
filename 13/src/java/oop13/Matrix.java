@@ -28,12 +28,4 @@ public class Matrix <T> {
 	public T get(int i, int j) {
 		return this.matrix.get(i).get(j);
 	}
-
-	public List<T> getRow(int i) {
-		return this.matrix.get(i);
-	}
-
-	public void setRow(int i, List<T> row) {
-		this.matrix.set(i, row);
-	}
 }
