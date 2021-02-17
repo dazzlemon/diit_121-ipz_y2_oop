@@ -14,11 +14,11 @@ public class MatrixIO {
 
 	public static void read(Matrix<Integer> matrix) {
 		var in = new Scanner(System.in);
-		var maxLenI = String.valueOf(matrix.height).length();
-		var maxLenJ = String.valueOf(matrix.width).length();
+		var maxLenI = digitsN(matrix.height - 1);
+		var maxLenJ = digitsN(matrix.width - 1);
 		for (int i = 0; i < matrix.height; i++) {
 			for (int j = 0; j < matrix.width; j++) {
-				System.out.printf("matrix[%" + maxLenI +  "d][" + "%" + maxLenJ + "d]", i, j);
+				System.out.printf("matrix[%" + maxLenI +  "d][" + "%" + maxLenJ + "d] = ", i, j);
 				matrix.set(i, j, in.nextInt());
 				System.out.println();
 			}
@@ -34,11 +34,11 @@ public class MatrixIO {
 		}
 	}
 
-	public static <T> void print(Matrix<T> matrix, Point pMax, Point p) {
+	public static void print(Matrix<Integer> matrix, Point pMax, Point p) {
 		var x = pMax.x;
 		var y = pMax.y;
 
-		var maxLen = String.valueOf(matrix.get(x, y)).length();
+		var maxLen = digitsN(matrix.get(x, y));
 
 		for (int i = 0; i < matrix.height; i++) {
 			for (int j = 0; j < matrix.width; j++) {
@@ -52,5 +52,9 @@ public class MatrixIO {
 			}
 			System.out.println(ANSI_RESET);
 		}
+	}
+
+	public static int digitsN(int x) {
+		return String.valueOf(x).length();
 	}
 }
