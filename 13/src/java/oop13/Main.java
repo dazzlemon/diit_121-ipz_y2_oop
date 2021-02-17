@@ -5,7 +5,7 @@ import java.awt.Point;
 public class Main {
 		public static void main(String[] args) {
 		var matrix = new Matrix<Integer>(5, 10, 0);
-		MatrixIO.randFill(matrix);
+		MatrixIO.read(matrix);
 
 		var zero = new Point(0, 0);
 		var indices = Solver.solve(matrix);

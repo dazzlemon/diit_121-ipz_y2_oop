@@ -2,6 +2,7 @@ package oop13;
 
 import java.awt.Point;
 import java.util.Random;
+import java.util.Scanner;
 
 public class MatrixIO {
 	public static final String ANSI_GREEN_BACKGROUND = "\u001B[42m";
@@ -12,9 +13,14 @@ public class MatrixIO {
 	public static final String ANSI_RESET = "\u001B[0m";
 
 	public static void read(Matrix<Integer> matrix) {
+		var in = new Scanner(System.in);
+		var maxLenI = String.valueOf(matrix.height).length();
+		var maxLenJ = String.valueOf(matrix.width).length();
 		for (int i = 0; i < matrix.height; i++) {
 			for (int j = 0; j < matrix.width; j++) {
-				matrix.set(i, j, i * matrix.width + j);
+				System.out.printf("matrix[%" + maxLenI +  "d][" + "%" + maxLenJ + "d]", i, j);
+				matrix.set(i, j, in.nextInt());
+				System.out.println();
 			}
 		}
 	}
