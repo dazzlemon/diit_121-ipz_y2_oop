@@ -20,7 +20,6 @@ public class MatrixIO {
 			for (int j = 0; j < matrix.width; j++) {
 				System.out.printf("matrix[%" + maxLenI +  "d][" + "%" + maxLenJ + "d] = ", i, j);
 				matrix.set(i, j, in.nextInt());
-				System.out.println();
 			}
 		}
 	}
