@@ -21,7 +21,7 @@ public class MatrixGui extends javax.swing.JFrame {
     }
     
     private void updateTable() {
-        var m = new Integer[matrix.height][matrix.width];
+        m = new Integer[matrix.height][matrix.width];
         for (int i = 0; i < matrix.height; i++) {
             m[i] = new Integer[matrix.width];
             for (int j = 0; j < matrix.width; j++) {
@@ -33,7 +33,7 @@ public class MatrixGui extends javax.swing.JFrame {
         for (int j = 0; j < matrix.width; j++) {
             names[j] = String.valueOf(j);
         }
-        table = new javax.swing.JTable(m, names);
+        table.setModel(new javax.swing.table.DefaultTableModel(m, names));
         table.setShowGrid(true);
         table.setTableHeader(null);
         jScrollPane1.setViewportView(table);
@@ -66,7 +66,16 @@ public class MatrixGui extends javax.swing.JFrame {
             }
         });
 
+        table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
         table.setShowGrid(true);
+        table.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(table);
 
         resizeButton.setText("resize");
@@ -136,7 +145,24 @@ public class MatrixGui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void sortButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortButtonActionPerformed
-        // TODO add your handling code here:
+        for (int i = 0; i < matrix.height; i++) {
+            for (int j = 0; j < matrix.width; j++) {
+                var mij = Integer.parseInt(table
+                                          .getModel()
+                                          .getValueAt(i, j)
+                                          .toString());
+                matrix.set(i, j, mij);
+            }
+        }
+        
+        var indices = com.dazzlemon.oop14.Solver.solve(matrix);
+	var x = indices.x;
+	var y = indices.y;			
+        
+        com.dazzlemon.oop14.Solver.swapRows(matrix, 0, x);
+	com.dazzlemon.oop14.Solver.swapColumns(matrix, 0, y);
+        
+        updateTable();
     }//GEN-LAST:event_sortButtonActionPerformed
 
     private void rowsTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rowsTextActionPerformed
@@ -193,11 +219,12 @@ public class MatrixGui extends javax.swing.JFrame {
     private javax.swing.JButton resizeButton;
     private javax.swing.JTextField rowsText;
     private javax.swing.JButton sortButton;
-    private javax.swing.JTable table;
+    public javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
     // My Variables
     private static final int MATRIX_W = 4;
     private static final int MATRIX_H = 4;
     private com.dazzlemon.oop14.Matrix<Integer> matrix = new com.dazzlemon.oop14.Matrix<Integer>(MATRIX_W, MATRIX_H, 0);
+    private Integer[][] m;
     // End of my variables
 }
