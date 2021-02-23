@@ -21,7 +21,7 @@ public class MatrixGui extends javax.swing.JFrame {
     }
     
     private void updateTable() {
-        m = new Integer[matrix.height][matrix.width];
+        var m = new Integer[matrix.height][matrix.width];
         for (int i = 0; i < matrix.height; i++) {
             m[i] = new Integer[matrix.width];
             for (int j = 0; j < matrix.width; j++) {
@@ -222,9 +222,6 @@ public class MatrixGui extends javax.swing.JFrame {
     public javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
     // My Variables
-    private static final int MATRIX_W = 4;
-    private static final int MATRIX_H = 4;
-    private com.dazzlemon.oop14.Matrix<Integer> matrix = new com.dazzlemon.oop14.Matrix<Integer>(MATRIX_W, MATRIX_H, 0);
-    private Integer[][] m;
+    private com.dazzlemon.oop14.Matrix<Integer> matrix = new com.dazzlemon.oop14.Matrix<Integer>(4, 4, 0);
     // End of my variables
 }
