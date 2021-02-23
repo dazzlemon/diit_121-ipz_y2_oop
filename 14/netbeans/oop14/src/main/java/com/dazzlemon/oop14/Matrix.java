@@ -8,6 +8,7 @@ public class Matrix <T> {
     public final int height;
     private List<List<T>> matrix;
     
+    
     public Matrix(int height, int width, T filler) {
 	this.height = height;
 	this.width  = width;
@@ -21,6 +22,7 @@ public class Matrix <T> {
 	}
     }
 
+    
     public void set(int i, int j, T val) {
 	this.matrix.get(i).set(j, val);
     }

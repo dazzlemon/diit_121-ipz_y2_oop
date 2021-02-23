@@ -15,6 +15,28 @@ public class MatrixGui extends javax.swing.JFrame {
      */
     public MatrixGui() {
         initComponents();
+        //
+        updateTable();
+        //
+    }
+    
+    private void updateTable() {
+        var m = new Integer[matrix.height][matrix.width];
+        for (int i = 0; i < matrix.height; i++) {
+            m[i] = new Integer[matrix.width];
+            for (int j = 0; j < matrix.width; j++) {
+                m[i][j] = matrix.get(i, j);
+            }
+        }
+       
+        var names = new String[matrix.width];
+        for (int j = 0; j < matrix.width; j++) {
+            names[j] = String.valueOf(j);
+        }
+        table = new javax.swing.JTable(m, names);
+        table.setShowGrid(true);
+        table.setTableHeader(null);
+        jScrollPane1.setViewportView(table);
     }
 
     /**
@@ -28,11 +50,12 @@ public class MatrixGui extends javax.swing.JFrame {
 
         sortButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        rowsButton = new javax.swing.JButton();
-        columnsButton = new javax.swing.JButton();
+        table = new javax.swing.JTable();
+        resizeButton = new javax.swing.JButton();
         columnsText = new javax.swing.JTextField();
         rowsText = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,32 +66,13 @@ public class MatrixGui extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jTable1.setShowGrid(true);
-        jTable1.setTableHeader(null);
-        jScrollPane1.setViewportView(jTable1);
+        table.setShowGrid(true);
+        jScrollPane1.setViewportView(table);
 
-        rowsButton.setText("set rows");
-
-        columnsButton.setText("set columns");
-        columnsButton.addActionListener(new java.awt.event.ActionListener() {
+        resizeButton.setText("resize");
+        resizeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                columnsButtonActionPerformed(evt);
-            }
-        });
-        columnsButton.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                columnsButtonKeyPressed(evt);
+                resizeButtonActionPerformed(evt);
             }
         });
 
@@ -81,21 +85,29 @@ public class MatrixGui extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("rows");
+
+        jLabel2.setText("columns");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
                 .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(rowsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(columnsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(sortButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(columnsText))
-                    .addComponent(rowsText, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(resizeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(sortButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(rowsText, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                            .addComponent(columnsText))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -105,14 +117,16 @@ public class MatrixGui extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 138, Short.MAX_VALUE)
-                        .addComponent(columnsText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 169, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(columnsText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(columnsButton)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rowsText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rowsText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rowsButton)
+                        .addComponent(resizeButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(sortButton)))
                 .addContainerGap())
@@ -129,13 +143,12 @@ public class MatrixGui extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_rowsTextActionPerformed
 
-    private void columnsButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_columnsButtonKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_columnsButtonKeyPressed
-
-    private void columnsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_columnsButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_columnsButtonActionPerformed
+    private void resizeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resizeButtonActionPerformed
+        int w = Integer.parseInt(columnsText.getText());
+        int h = Integer.parseInt(rowsText.getText());
+        matrix = new com.dazzlemon.oop14.Matrix<>(w, h, 0);
+        updateTable();
+    }//GEN-LAST:event_resizeButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,7 +176,7 @@ public class MatrixGui extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MatrixGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -173,12 +186,18 @@ public class MatrixGui extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton columnsButton;
     private javax.swing.JTextField columnsText;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JButton rowsButton;
+    private javax.swing.JButton resizeButton;
     private javax.swing.JTextField rowsText;
     private javax.swing.JButton sortButton;
+    private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
+    // My Variables
+    private static final int MATRIX_W = 4;
+    private static final int MATRIX_H = 4;
+    private com.dazzlemon.oop14.Matrix<Integer> matrix = new com.dazzlemon.oop14.Matrix<Integer>(MATRIX_W, MATRIX_H, 0);
+    // End of my variables
 }
