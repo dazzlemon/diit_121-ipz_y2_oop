@@ -52,8 +52,8 @@ public class MatrixGui extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         resizeButton = new javax.swing.JButton();
-        columnsText = new javax.swing.JTextField();
         rowsText = new javax.swing.JTextField();
+        columnsText = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -85,12 +85,12 @@ public class MatrixGui extends javax.swing.JFrame {
             }
         });
 
-        columnsText.setText("4");
-
         rowsText.setText("4");
-        rowsText.addActionListener(new java.awt.event.ActionListener() {
+
+        columnsText.setText("4");
+        columnsText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rowsTextActionPerformed(evt);
+                columnsTextActionPerformed(evt);
             }
         });
 
@@ -115,8 +115,8 @@ public class MatrixGui extends javax.swing.JFrame {
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(rowsText, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
-                            .addComponent(columnsText))))
+                            .addComponent(columnsText, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                            .addComponent(rowsText))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -129,10 +129,10 @@ public class MatrixGui extends javax.swing.JFrame {
                         .addGap(0, 169, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(columnsText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(rowsText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(rowsText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(columnsText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(resizeButton)
@@ -165,14 +165,14 @@ public class MatrixGui extends javax.swing.JFrame {
         updateTable();
     }//GEN-LAST:event_sortButtonActionPerformed
 
-    private void rowsTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rowsTextActionPerformed
+    private void columnsTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_columnsTextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rowsTextActionPerformed
+    }//GEN-LAST:event_columnsTextActionPerformed
 
     private void resizeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resizeButtonActionPerformed
         int w = Integer.parseInt(columnsText.getText());
         int h = Integer.parseInt(rowsText.getText());
-        var newMatrix = new com.dazzlemon.oop14.Matrix<>(w, h, 0);
+        var newMatrix = new com.dazzlemon.oop14.Matrix<>(h, w, 0);
         for (int i = 0; i < h && i < matrix.height; i++) {
             for (int j = 0; j < w && j < matrix.width; j++) {
                 var mij = Integer.parseInt(table

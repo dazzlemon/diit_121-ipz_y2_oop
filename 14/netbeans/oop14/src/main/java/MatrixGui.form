@@ -37,8 +37,8 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="rowsText" pref="43" max="32767" attributes="0"/>
-                          <Component id="columnsText" max="32767" attributes="0"/>
+                          <Component id="columnsText" pref="43" max="32767" attributes="0"/>
+                          <Component id="rowsText" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -56,11 +56,11 @@
                       <EmptySpace min="0" pref="169" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="columnsText" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rowsText" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="rowsText" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="columnsText" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -117,17 +117,17 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="resizeButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="columnsText">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="4"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JTextField" name="rowsText">
       <Properties>
         <Property name="text" type="java.lang.String" value="4"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="columnsText">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="4"/>
+      </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rowsTextActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="columnsTextActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
