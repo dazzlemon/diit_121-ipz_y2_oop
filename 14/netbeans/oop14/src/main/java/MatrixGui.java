@@ -172,7 +172,17 @@ public class MatrixGui extends javax.swing.JFrame {
     private void resizeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resizeButtonActionPerformed
         int w = Integer.parseInt(columnsText.getText());
         int h = Integer.parseInt(rowsText.getText());
-        matrix = new com.dazzlemon.oop14.Matrix<>(w, h, 0);
+        var newMatrix = new com.dazzlemon.oop14.Matrix<>(w, h, 0);
+        for (int i = 0; i < h && i < matrix.height; i++) {
+            for (int j = 0; j < w && j < matrix.width; j++) {
+                var mij = Integer.parseInt(table
+                                          .getModel()
+                                          .getValueAt(i, j)
+                                          .toString());
+                newMatrix.set(i, j, mij);
+            }
+        }
+        matrix = newMatrix;
         updateTable();
     }//GEN-LAST:event_resizeButtonActionPerformed
 
