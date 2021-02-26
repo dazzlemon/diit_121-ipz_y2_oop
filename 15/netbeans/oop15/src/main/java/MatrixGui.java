@@ -1,5 +1,8 @@
 
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 
 /*
@@ -213,23 +216,33 @@ public class MatrixGui extends javax.swing.JFrame {
     }//GEN-LAST:event_resizeButtonActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        System.out.println("save clicked");
-        var j = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-        var r = j.showSaveDialog(null);
-        if (r == JFileChooser.APPROVE_OPTION) {
-            System.out.println("Saved to: " + j.getSelectedFile().getAbsolutePath());
+        var fileAddr = getFile("save");
+        if (!fileAddr.endsWith(".txt")) {
+             JOptionPane.showMessageDialog(new JFrame(), "INCORRECT FILE EXTENSION", "Dialog", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void loadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadButtonActionPerformed
-        System.out.println("load clicked");
-        var j = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-        var r = j.showDialog(null, "Load");
-        if (r == JFileChooser.APPROVE_OPTION) {
-            System.out.println("Loaded from: " + j.getSelectedFile().getAbsolutePath());
-        }
+        getFile("load");
     }//GEN-LAST:event_loadButtonActionPerformed
 
+    
+    private String getFile(String text) {
+        System.out.println(text + " clicked");
+        var j = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+        var f = new FileNameExtensionFilter("txt", "txt");
+        j.setFileFilter(f);
+        j.setAcceptAllFileFilterUsed(false);
+        var r = j.showDialog(null, text);
+        if (r == JFileChooser.APPROVE_OPTION) {
+            System.out.println(text + "\'d from: " + j.getSelectedFile().getAbsolutePath());
+        }
+        if (j.getSelectedFile() == null) {
+            return null;
+        }
+        return j.getSelectedFile().getAbsolutePath();
+    }
+    
     /**
      * @param args the command line arguments
      */
