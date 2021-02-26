@@ -1,5 +1,6 @@
 
 import java.io.File;
+import java.io.IOException;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -219,13 +220,26 @@ public class MatrixGui extends javax.swing.JFrame {
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         System.out.println("save clicked");
         var file = getFile("save");
+        if (file == null) {
+            return;
+        }
         if (!file.getName().endsWith(".txt")) {
             JOptionPane.showMessageDialog(new JFrame(), "INCORRECT FILE EXTENSION!", "Dialog", JOptionPane.ERROR_MESSAGE);
-        } else if (!file.canWrite()) {
-            JOptionPane.showMessageDialog(new JFrame(), "CAN\'T WRITE TO THAT FILE!", "Dialog", JOptionPane.ERROR_MESSAGE);
-        } else {
-            System.out.println("saved to: " + file.getAbsolutePath());
+            return;
         }
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(new JFrame(), "ERROR OCCURED WHILE CREATING FILE!", "Dialog", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        }
+        if (!file.canWrite()) {
+            JOptionPane.showMessageDialog(new JFrame(), "CAN\'T WRITE TO THAT FILE!", "Dialog", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        System.out.println("saved to: " + file.getAbsolutePath());
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void loadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadButtonActionPerformed
