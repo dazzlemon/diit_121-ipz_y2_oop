@@ -7,7 +7,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class MatrixFileIO {
-    public static void matrixSave(Matrix<Integer> matrix, File file) throws IOException {
+    public static void matrixSave(Matrix<Integer> matrix, File file)
+            throws IOException {
         var fw = new FileWriter(file);
         //write size (rows cols)
         var buffer = "%d %d\n"
@@ -26,7 +27,8 @@ public class MatrixFileIO {
     }
     
     
-    public static Matrix<Integer> matrixLoad(File file) throws IOException, Exception {
+    public static Matrix<Integer> matrixLoad(File file)
+            throws IOException, Exception {
         var br = new BufferedReader(new FileReader(file));
         var line = br.readLine();
         var words = line.split("\\s");
@@ -39,11 +41,16 @@ public class MatrixFileIO {
         for (int i = 0; i < h; i++) {
             line = br.readLine();
             if (line == null) {
-                throw new Exception("incorrect amount of lines: " + i + " instead of " + h);
+                throw new Exception(
+                    "incorrect amount of lines: %d instead of %d"
+                        .formatted(i, h)
+                );
             }
             words = line.split("\\s");
             if (words.length != w) {
-                throw new Exception("incorrect amount of elements on line " + (i + 1));
+                throw new Exception(
+                    "incorrect amount of elements on line " + (i + 1)
+                );
             }
             for (int j = 0; j < w; j++) {
                 var mij = Integer.parseInt(words[j]);

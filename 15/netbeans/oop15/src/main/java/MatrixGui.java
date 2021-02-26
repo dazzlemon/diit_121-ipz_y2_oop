@@ -222,25 +222,34 @@ public class MatrixGui extends javax.swing.JFrame {
         }
     }
     
+    private void errorDialog(String err) {
+        JOptionPane.showMessageDialog(
+                new JFrame(),
+                err,
+                "Error",
+                JOptionPane.ERROR_MESSAGE
+        );
+    }
+    
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         var file = getFile("save");
         if (file == null) {
             return;
         }
         if (!file.getName().endsWith(".txt")) {
-            JOptionPane.showMessageDialog(new JFrame(), "INCORRECT FILE EXTENSION!", "Dialog", JOptionPane.ERROR_MESSAGE);
+            errorDialog("INCORRECT FILE EXTENSION!");
             return;
         }
         if (!file.exists()) {
             try {
                 file.createNewFile();
             } catch (IOException e) {
-                JOptionPane.showMessageDialog(new JFrame(), "ERROR OCCURED WHILE CREATING FILE!", "Dialog", JOptionPane.ERROR_MESSAGE);
+                errorDialog("ERROR OCCURED WHILE CREATING FILE!");
                 return;
             }
         }
         if (!file.canWrite()) {
-            JOptionPane.showMessageDialog(new JFrame(), "CAN\'T WRITE TO THAT FILE!", "Dialog", JOptionPane.ERROR_MESSAGE);
+            errorDialog("CAN\'T WRITE TO THAT FILE!");
             return;
         }
         
@@ -248,7 +257,7 @@ public class MatrixGui extends javax.swing.JFrame {
         try {
             MatrixFileIO.matrixSave(matrix, file);
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(new JFrame(), "ERROR OCCURED WHILE WRITING TO THE FILE!", "Dialog", JOptionPane.ERROR_MESSAGE);
+            errorDialog("ERROR OCCURED WHILE WRITING TO THE FILE!");
         }
     }//GEN-LAST:event_saveButtonActionPerformed
    
@@ -258,29 +267,31 @@ public class MatrixGui extends javax.swing.JFrame {
             return;
         }
         if (!file.getName().endsWith(".txt")) {
-            JOptionPane.showMessageDialog(new JFrame(), "INCORRECT FILE EXTENSION!", "Dialog", JOptionPane.ERROR_MESSAGE);
+            errorDialog("INCORRECT FILE EXTENSION!");
             return;
         }
         if (!file.exists()) {
-            JOptionPane.showMessageDialog(new JFrame(), "FILE DOESN\'T EXIST!", "Dialog", JOptionPane.ERROR_MESSAGE);
+            errorDialog("FILE DOESN\'T EXIST!");
             return;
         }
         if (!file.canRead()) {
-            JOptionPane.showMessageDialog(new JFrame(), "CAN\'T READ THAT FILE!", "Dialog", JOptionPane.ERROR_MESSAGE);
+            errorDialog("CAN\'T READ THAT FILE!");
             return;
         }
         try {
             matrix = MatrixFileIO.matrixLoad(file);
             updateTable();
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(new JFrame(), "ERROR OCCURED WHILE READING THE FILE!", "Dialog", JOptionPane.ERROR_MESSAGE);
+            errorDialog("ERROR OCCURED WHILE READING THE FILE!");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Dialog", JOptionPane.ERROR_MESSAGE);
+            errorDialog(e.getMessage());
         }
     }//GEN-LAST:event_loadButtonActionPerformed
 
     private File getFile(String text) {
-        var j = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+        var j = new JFileChooser(FileSystemView
+                                .getFileSystemView()
+                                .getHomeDirectory());
         var f = new FileNameExtensionFilter("txt", "txt");
         j.setFileFilter(f);
         j.setAcceptAllFileFilterUsed(false);
