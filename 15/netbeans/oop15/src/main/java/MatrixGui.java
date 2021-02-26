@@ -1,6 +1,8 @@
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -290,8 +292,34 @@ public class MatrixGui extends javax.swing.JFrame {
             return;
         }
         System.out.println("loaded from: " + file.getAbsolutePath());
+        try {
+            matrix = matrixLoad(file);
+            updateTable();
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(new JFrame(), "ERROR OCCURED WHILE READING THE FILE!", "Dialog", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_loadButtonActionPerformed
 
+    private static com.dazzlemon.oop15.Matrix<Integer> matrixLoad(File file) throws IOException {
+        var br = new BufferedReader(new FileReader(file));
+        var line = br.readLine();
+        var words = line.split("\\s");
+        var h = Integer.parseInt(words[0]);
+        var w = Integer.parseInt(words[1]);
+        var matrix = new com.dazzlemon.oop15.Matrix<Integer>(h, w, 0);
+        for (int i = 0; i < h; i++) {
+            line = br.readLine();
+            words = line.split("\\s");
+            if (words.length != w) {
+                //throw
+            }
+            for (int j = 0; j < w; j++) {
+                var mij = Integer.parseInt(words[j]);
+                matrix.set(i, j, mij);
+            }
+        }
+        return matrix;
+    }
     
     private File getFile(String text) {
         var j = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
