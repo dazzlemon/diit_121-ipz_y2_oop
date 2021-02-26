@@ -245,9 +245,22 @@ public class MatrixGui extends javax.swing.JFrame {
     private void loadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadButtonActionPerformed
         System.out.println("load clicked");
         var file = getFile("load");
-        /*if (!) {
-            JOptionPane.showMessageDialog(new JFrame(), "FILE DOESN'T EXIST!", "Dialog", JOptionPane.ERROR_MESSAGE);
-        }*/
+        if (file == null) {
+            return;
+        }
+        if (!file.getName().endsWith(".txt")) {
+            JOptionPane.showMessageDialog(new JFrame(), "INCORRECT FILE EXTENSION!", "Dialog", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (!file.exists()) {
+            JOptionPane.showMessageDialog(new JFrame(), "FILE DOESN\'T EXIST!", "Dialog", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (!file.canRead()) {
+            JOptionPane.showMessageDialog(new JFrame(), "CAN\'T READ THAT FILE!", "Dialog", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        System.out.println("loaded from: " + file.getAbsolutePath());
     }//GEN-LAST:event_loadButtonActionPerformed
 
     
