@@ -223,7 +223,6 @@ public class MatrixGui extends javax.swing.JFrame {
     }
     
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        System.out.println("save clicked");
         var file = getFile("save");
         if (file == null) {
             return;
@@ -245,30 +244,33 @@ public class MatrixGui extends javax.swing.JFrame {
             return;
         }
         
-        try (FileOutputStream fos = new FileOutputStream(file)) {
-            System.out.println("saved to: " + file.getAbsolutePath());
-            updateMatrix();
-            //write size (rows cols)
-            byte[] buffer = "%d %d\n"
-                          . formatted(matrix.height, matrix.width)
-                          . getBytes();
-            
-            fos.write(buffer);
-            //write elements
-            for (int i = 0; i < matrix.height; i++) {
-                for (int j = 0; j < matrix.width; j++) {
-                    buffer = "%d "
-                           . formatted(matrix.get(i, j))
-                           . getBytes();
-                    fos.write(buffer);
-                }
-                fos.write('\n');
-            }
+        updateMatrix();
+        try {
+            matrixSave(matrix, file);
         } catch (IOException e) {
             JOptionPane.showMessageDialog(new JFrame(), "ERROR OCCURED WHILE WRITING TO THE FILE!", "Dialog", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_saveButtonActionPerformed
 
+    private static void matrixSave(com.dazzlemon.oop15.Matrix<Integer> matrix, File file) throws IOException {
+        var fos = new FileOutputStream(file);
+        //write size (rows cols)
+        byte[] buffer = "%d %d\n"
+                      . formatted(matrix.height, matrix.width)
+                      . getBytes();
+        fos.write(buffer);
+        //write elements
+        for (int i = 0; i < matrix.height; i++) {
+            for (int j = 0; j < matrix.width; j++) {
+                buffer = "%d "
+                       . formatted(matrix.get(i, j))
+                       . getBytes();
+                fos.write(buffer);
+            }
+            fos.write('\n');
+        }
+    }
+    
     private void loadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadButtonActionPerformed
         System.out.println("load clicked");
         var file = getFile("load");
