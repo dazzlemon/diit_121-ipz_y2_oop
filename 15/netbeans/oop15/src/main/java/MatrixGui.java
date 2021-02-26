@@ -177,15 +177,7 @@ public class MatrixGui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void sortButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortButtonActionPerformed
-        for (int i = 0; i < matrix.height; i++) {
-            for (int j = 0; j < matrix.width; j++) {
-                var mij = Integer.parseInt(table
-                                          .getModel()
-                                          .getValueAt(i, j)
-                                          .toString());
-                matrix.set(i, j, mij);
-            }
-        }
+        updateMatrix();
         
         var indices = com.dazzlemon.oop15.Solver.solve(matrix);
 	var x = indices.x;
@@ -218,6 +210,18 @@ public class MatrixGui extends javax.swing.JFrame {
         updateTable();
     }//GEN-LAST:event_resizeButtonActionPerformed
 
+    private void updateMatrix() {
+        for (int i = 0; i < matrix.height; i++) {
+            for (int j = 0; j < matrix.width; j++) {
+                var mij = Integer.parseInt(table
+                                          .getModel()
+                                          .getValueAt(i, j)
+                                          .toString());
+                matrix.set(i, j, mij);
+            }
+        }
+    }
+    
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         System.out.println("save clicked");
         var file = getFile("save");
@@ -243,8 +247,23 @@ public class MatrixGui extends javax.swing.JFrame {
         
         try (FileOutputStream fos = new FileOutputStream(file)) {
             System.out.println("saved to: " + file.getAbsolutePath());
-            byte[] buffer = "saved".getBytes();
+            updateMatrix();
+            //write size (rows cols)
+            byte[] buffer = "%d %d\n"
+                          . formatted(matrix.height, matrix.width)
+                          . getBytes();
+            
             fos.write(buffer);
+            //write elements
+            for (int i = 0; i < matrix.height; i++) {
+                for (int j = 0; j < matrix.width; j++) {
+                    buffer = "%d "
+                           . formatted(matrix.get(i, j))
+                           . getBytes();
+                    fos.write(buffer);
+                }
+                fos.write('\n');
+            }
         } catch (IOException e) {
             JOptionPane.showMessageDialog(new JFrame(), "ERROR OCCURED WHILE WRITING TO THE FILE!", "Dialog", JOptionPane.ERROR_MESSAGE);
         }
