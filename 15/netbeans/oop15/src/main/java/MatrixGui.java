@@ -274,7 +274,6 @@ public class MatrixGui extends javax.swing.JFrame {
     }
     
     private void loadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadButtonActionPerformed
-        System.out.println("load clicked");
         var file = getFile("load");
         if (file == null) {
             return;
@@ -305,11 +304,17 @@ public class MatrixGui extends javax.swing.JFrame {
         var br = new BufferedReader(new FileReader(file));
         var line = br.readLine();
         var words = line.split("\\s");
+        if (words.length != 2) {
+            throw new Exception("incorrect amount tokens on size line");
+        }
         var h = Integer.parseInt(words[0]);
         var w = Integer.parseInt(words[1]);
         var matrix = new com.dazzlemon.oop15.Matrix<Integer>(h, w, 0);
         for (int i = 0; i < h; i++) {
             line = br.readLine();
+            if (line == null) {
+                throw new Exception("incorrect amount of lines: " + i + " instead of " + h);
+            }
             words = line.split("\\s");
             if (words.length != w) {
                 throw new Exception("incorrect amount of elements on line " + (i + 1));
@@ -318,6 +323,9 @@ public class MatrixGui extends javax.swing.JFrame {
                 var mij = Integer.parseInt(words[j]);
                 matrix.set(i, j, mij);
             }
+        }
+        if (br.ready()) {
+            throw new Exception("too many lines");
         }
         return matrix;
     }
