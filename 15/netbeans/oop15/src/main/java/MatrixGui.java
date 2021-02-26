@@ -1,14 +1,12 @@
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
+import com.dazzlemon.oop15.*;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -181,12 +179,12 @@ public class MatrixGui extends javax.swing.JFrame {
     private void sortButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortButtonActionPerformed
         updateMatrix();
         
-        var indices = com.dazzlemon.oop15.Solver.solve(matrix);
+        var indices = Solver.solve(matrix);
 	var x = indices.x;
 	var y = indices.y;			
         
-        com.dazzlemon.oop15.Solver.swapRows(matrix, 0, x);
-	com.dazzlemon.oop15.Solver.swapColumns(matrix, 0, y);
+        Solver.swapRows(matrix, 0, x);
+	Solver.swapColumns(matrix, 0, y);
         
         updateTable();
     }//GEN-LAST:event_sortButtonActionPerformed
@@ -198,7 +196,7 @@ public class MatrixGui extends javax.swing.JFrame {
     private void resizeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resizeButtonActionPerformed
         int w = Integer.parseInt(columnsText.getText());
         int h = Integer.parseInt(rowsText.getText());
-        var newMatrix = new com.dazzlemon.oop15.Matrix<>(h, w, 0);
+        var newMatrix = new Matrix<>(h, w, 0);
         for (int i = 0; i < h && i < matrix.height; i++) {
             for (int j = 0; j < w && j < matrix.width; j++) {
                 var mij = Integer.parseInt(table
@@ -248,30 +246,12 @@ public class MatrixGui extends javax.swing.JFrame {
         
         updateMatrix();
         try {
-            matrixSave(matrix, file);
+            MatrixFileIO.matrixSave(matrix, file);
         } catch (IOException e) {
             JOptionPane.showMessageDialog(new JFrame(), "ERROR OCCURED WHILE WRITING TO THE FILE!", "Dialog", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_saveButtonActionPerformed
-
-    private static void matrixSave(com.dazzlemon.oop15.Matrix<Integer> matrix, File file) throws IOException {
-        var fw = new FileWriter(file);
-        //write size (rows cols)
-        var buffer = "%d %d\n"
-                      . formatted(matrix.height, matrix.width);
-        fw.write(buffer);
-        //write elements
-        for (int i = 0; i < matrix.height; i++) {
-            for (int j = 0; j < matrix.width; j++) {
-                buffer = "%d "
-                       . formatted(matrix.get(i, j));
-                fw.write(buffer);
-            }
-            fw.append('\n');
-        }
-        fw.flush();
-    }
-    
+   
     private void loadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadButtonActionPerformed
         var file = getFile("load");
         if (file == null) {
@@ -290,7 +270,7 @@ public class MatrixGui extends javax.swing.JFrame {
             return;
         }
         try {
-            matrix = matrixLoad(file);
+            matrix = MatrixFileIO.matrixLoad(file);
             updateTable();
         } catch (IOException e) {
             JOptionPane.showMessageDialog(new JFrame(), "ERROR OCCURED WHILE READING THE FILE!", "Dialog", JOptionPane.ERROR_MESSAGE);
@@ -299,36 +279,6 @@ public class MatrixGui extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_loadButtonActionPerformed
 
-    private static com.dazzlemon.oop15.Matrix<Integer> matrixLoad(File file) throws IOException, Exception {
-        var br = new BufferedReader(new FileReader(file));
-        var line = br.readLine();
-        var words = line.split("\\s");
-        if (words.length != 2) {
-            throw new Exception("incorrect amount tokens on size line");
-        }
-        var h = Integer.parseInt(words[0]);
-        var w = Integer.parseInt(words[1]);
-        var matrix = new com.dazzlemon.oop15.Matrix<Integer>(h, w, 0);
-        for (int i = 0; i < h; i++) {
-            line = br.readLine();
-            if (line == null) {
-                throw new Exception("incorrect amount of lines: " + i + " instead of " + h);
-            }
-            words = line.split("\\s");
-            if (words.length != w) {
-                throw new Exception("incorrect amount of elements on line " + (i + 1));
-            }
-            for (int j = 0; j < w; j++) {
-                var mij = Integer.parseInt(words[j]);
-                matrix.set(i, j, mij);
-            }
-        }
-        if (br.ready()) {
-            throw new Exception("too many lines");
-        }
-        return matrix;
-    }
-    
     private File getFile(String text) {
         var j = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
         var f = new FileNameExtensionFilter("txt", "txt");
@@ -389,6 +339,6 @@ public class MatrixGui extends javax.swing.JFrame {
     public javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
     // My Variables
-    private com.dazzlemon.oop15.Matrix<Integer> matrix = new com.dazzlemon.oop15.Matrix<Integer>(4, 4, 0);
+    private Matrix<Integer> matrix = new Matrix<Integer>(4, 4, 0);
     // End of my variables
 }
