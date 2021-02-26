@@ -223,6 +223,11 @@ public class MatrixGui extends javax.swing.JFrame {
 
     private void loadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadButtonActionPerformed
         System.out.println("load clicked");
+        var j = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+        var r = j.showDialog(null, "Load");
+        if (r == JFileChooser.APPROVE_OPTION) {
+            System.out.println("Loaded from: " + j.getSelectedFile().getAbsolutePath());
+        }
     }//GEN-LAST:event_loadButtonActionPerformed
 
     /**
