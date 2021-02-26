@@ -1,8 +1,8 @@
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -255,22 +255,21 @@ public class MatrixGui extends javax.swing.JFrame {
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private static void matrixSave(com.dazzlemon.oop15.Matrix<Integer> matrix, File file) throws IOException {
-        var fos = new FileOutputStream(file);
+        var fw = new FileWriter(file);
         //write size (rows cols)
-        byte[] buffer = "%d %d\n"
-                      . formatted(matrix.height, matrix.width)
-                      . getBytes();
-        fos.write(buffer);
+        var buffer = "%d %d\n"
+                      . formatted(matrix.height, matrix.width);
+        fw.write(buffer);
         //write elements
         for (int i = 0; i < matrix.height; i++) {
             for (int j = 0; j < matrix.width; j++) {
                 buffer = "%d "
-                       . formatted(matrix.get(i, j))
-                       . getBytes();
-                fos.write(buffer);
+                       . formatted(matrix.get(i, j));
+                fw.write(buffer);
             }
-            fos.write('\n');
+            fw.append('\n');
         }
+        fw.flush();
     }
     
     private void loadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadButtonActionPerformed
