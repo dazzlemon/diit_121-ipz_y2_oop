@@ -1,5 +1,6 @@
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -239,7 +240,14 @@ public class MatrixGui extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(new JFrame(), "CAN\'T WRITE TO THAT FILE!", "Dialog", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        System.out.println("saved to: " + file.getAbsolutePath());
+        
+        try (FileOutputStream fos = new FileOutputStream(file)) {
+            System.out.println("saved to: " + file.getAbsolutePath());
+            byte[] buffer = "saved".getBytes();
+            fos.write(buffer);
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(new JFrame(), "ERROR OCCURED WHILE WRITING TO THE FILE!", "Dialog", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void loadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadButtonActionPerformed
