@@ -291,16 +291,17 @@ public class MatrixGui extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(new JFrame(), "CAN\'T READ THAT FILE!", "Dialog", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        System.out.println("loaded from: " + file.getAbsolutePath());
         try {
             matrix = matrixLoad(file);
             updateTable();
         } catch (IOException e) {
             JOptionPane.showMessageDialog(new JFrame(), "ERROR OCCURED WHILE READING THE FILE!", "Dialog", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Dialog", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_loadButtonActionPerformed
 
-    private static com.dazzlemon.oop15.Matrix<Integer> matrixLoad(File file) throws IOException {
+    private static com.dazzlemon.oop15.Matrix<Integer> matrixLoad(File file) throws IOException, Exception {
         var br = new BufferedReader(new FileReader(file));
         var line = br.readLine();
         var words = line.split("\\s");
@@ -311,7 +312,7 @@ public class MatrixGui extends javax.swing.JFrame {
             line = br.readLine();
             words = line.split("\\s");
             if (words.length != w) {
-                //throw
+                throw new Exception("incorrect amount of elements on line " + (i + 1));
             }
             for (int j = 0; j < w; j++) {
                 var mij = Integer.parseInt(words[j]);
