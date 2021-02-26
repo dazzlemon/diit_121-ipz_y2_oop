@@ -1,4 +1,5 @@
 
+import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -216,18 +217,21 @@ public class MatrixGui extends javax.swing.JFrame {
     }//GEN-LAST:event_resizeButtonActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        var fileAddr = getFile("save");
-        if (!fileAddr.endsWith(".txt")) {
-             JOptionPane.showMessageDialog(new JFrame(), "INCORRECT FILE EXTENSION", "Dialog", JOptionPane.ERROR_MESSAGE);
+        var file = getFile("save");
+        if (!file.getName().endsWith(".txt")) {
+            JOptionPane.showMessageDialog(new JFrame(), "INCORRECT FILE EXTENSION!", "Dialog", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void loadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadButtonActionPerformed
-        getFile("load");
+        var file = getFile("load");
+        /*if (!) {
+            JOptionPane.showMessageDialog(new JFrame(), "FILE DOESN'T EXIST!", "Dialog", JOptionPane.ERROR_MESSAGE);
+        }*/
     }//GEN-LAST:event_loadButtonActionPerformed
 
     
-    private String getFile(String text) {
+    private File getFile(String text) {
         System.out.println(text + " clicked");
         var j = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
         var f = new FileNameExtensionFilter("txt", "txt");
@@ -236,11 +240,9 @@ public class MatrixGui extends javax.swing.JFrame {
         var r = j.showDialog(null, text);
         if (r == JFileChooser.APPROVE_OPTION) {
             System.out.println(text + "\'d from: " + j.getSelectedFile().getAbsolutePath());
+            return j.getSelectedFile();
         }
-        if (j.getSelectedFile() == null) {
-            return null;
-        }
-        return j.getSelectedFile().getAbsolutePath();
+        return null;
     }
     
     /**
