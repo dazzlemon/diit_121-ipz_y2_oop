@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Matrix <T> implements Serializable {
-    private static final long serialVersionUID =1L;//class v1
+    private static final long serialVersionUID = 1L;//class v1
     
     public final int width;
     public final int height;

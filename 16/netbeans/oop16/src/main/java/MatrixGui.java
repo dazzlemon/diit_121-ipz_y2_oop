@@ -285,6 +285,8 @@ public class MatrixGui extends javax.swing.JFrame {
         }
         try (var ois = new ObjectInputStream(new FileInputStream(file))) {
             matrix = (Matrix<Integer>)ois.readObject();
+            // if class ver was incorrect or
+            // it was other class exception would be thrown
             updateTable();
         } catch (IOException e) {
             errorDialog("ERROR OCCURED WHILE READING THE FILE!");
