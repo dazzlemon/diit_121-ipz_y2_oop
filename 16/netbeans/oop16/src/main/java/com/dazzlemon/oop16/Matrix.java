@@ -1,9 +1,12 @@
 package com.dazzlemon.oop16;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Matrix <T> {
+public class Matrix <T> implements Serializable {
+    private static final long serialVersionUID =1L;//class v1
+    
     public final int width;
     public final int height;
     private List<List<T>> matrix;
@@ -27,6 +30,7 @@ public class Matrix <T> {
 	this.matrix.get(i).set(j, val);
     }
 
+    
     public T get(int i, int j) {
 	return this.matrix.get(i).get(j);
     }

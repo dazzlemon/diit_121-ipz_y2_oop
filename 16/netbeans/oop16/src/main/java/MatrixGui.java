@@ -1,9 +1,12 @@
 
-import com.dazzlemon.oop16.MatrixFileIO;
 import com.dazzlemon.oop16.Matrix;
 import com.dazzlemon.oop16.Solver;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -238,7 +241,7 @@ public class MatrixGui extends javax.swing.JFrame {
         if (file == null) {
             return;
         }
-        if (!file.getName().endsWith(".txt")) {
+        if (!file.getName().endsWith(".ser")) {
             errorDialog("INCORRECT FILE EXTENSION!");
             return;
         }
@@ -256,8 +259,8 @@ public class MatrixGui extends javax.swing.JFrame {
         }
         
         updateMatrix();
-        try {
-            MatrixFileIO.matrixSave(matrix, file);
+        try (var oos = new ObjectOutputStream(new FileOutputStream(file))) {
+            oos.writeObject(matrix);
         } catch (IOException e) {
             errorDialog("ERROR OCCURED WHILE WRITING TO THE FILE!");
         }
@@ -268,7 +271,7 @@ public class MatrixGui extends javax.swing.JFrame {
         if (file == null) {
             return;
         }
-        if (!file.getName().endsWith(".txt")) {
+        if (!file.getName().endsWith(".ser")) {
             errorDialog("INCORRECT FILE EXTENSION!");
             return;
         }
@@ -280,8 +283,8 @@ public class MatrixGui extends javax.swing.JFrame {
             errorDialog("CAN\'T READ THAT FILE!");
             return;
         }
-        try {
-            matrix = MatrixFileIO.matrixLoad(file);
+        try (var ois = new ObjectInputStream(new FileInputStream(file))) {
+            matrix = (Matrix<Integer>)ois.readObject();
             updateTable();
         } catch (IOException e) {
             errorDialog("ERROR OCCURED WHILE READING THE FILE!");
@@ -294,7 +297,7 @@ public class MatrixGui extends javax.swing.JFrame {
         var j = new JFileChooser(FileSystemView
                                 .getFileSystemView()
                                 .getHomeDirectory());
-        var f = new FileNameExtensionFilter("txt", "txt");
+        var f = new FileNameExtensionFilter("ser", "ser");
         j.setFileFilter(f);
         j.setAcceptAllFileFilterUsed(false);
         var r = j.showDialog(null, text);
